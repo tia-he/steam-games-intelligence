@@ -40,6 +40,32 @@ Phase 1 audits both files empirically (not from documentation assumptions), chec
 - `outputs/join_summary.csv` — join coverage statistics
 - `figures/phase1/` — diagnostic figures
 
+## Phase 2 status: Steam Market Analytics — complete
+
+Phase 2 builds the structured-data analytical story of the Steam marketplace: evolution of the catalog over time, supply-side crowding and concentration, current pricing structure, and player reception/popularity across market segments — all descriptive, cohort-aware, and free of causal claims. See:
+
+- `notebooks/02_market_analytics.ipynb` — the full walkthrough (11 figures, organized around 4 research questions rather than individual columns)
+- `outputs/phase2_market_findings.md` — the written findings, evidence, and interpretation
+- `figures/phase2/` — final figures
+- `src/market_utils.py` — reusable Phase 2 transforms (built on top of `src/audit_utils.py`)
+- `data/processed/games_clean.parquet` — a small (~8 MB), deterministic, normalized game-level table regenerated from `steam_games.csv` (documented in the notebook; not treated as ground truth for coarse fields like ownership)
+
+**Five strongest findings:**
+
+1. **Catalog growth is compositional, not uniform.** Comparing 2014-2016 to 2023-2025 release cohorts (catalog grew ~7.2x overall), Free To Play releases grew ~14.3x and Early Access ~10.3x, while Action (~5.8x) and Strategy (~6.4x) grew slowest — Action's and Strategy's *share* of releases actually declined even as absolute counts rose. The free-release share climbed from 3.5% (2010) to ~26% (2024-2025).
+2. **Steam's catalog supply is highly fragmented, not publisher-dominated.** Across 86,963 unique developers and 73,219 unique publishers, ~77% of each appear in only one catalog record, and the top-10 developers combined hold just 1.1% of all developer-game links (a *catalog/release-count* concentration measure, not revenue).
+3. **Extreme prices (up to $107,500) are explainable, not data errors** — a mix of deliberate novelty/shock listings and legitimate professional creative-software titles sold through the game storefront (e.g. Houdini Indie, VEGAS Edit). Typical pricing is far more modest: median paid price $5.99, 90th percentile $19.99.
+4. **A genre's all-time popularity ranking can fully invert once release cohort is controlled for.** Massively Multiplayer has the highest all-time median review count of any major genre (17) — driven by a handful of long-lived legacy titles — but the 2023-2024 release cohort's MMO median collapses to 1, the lowest of any genre shown. This is the clearest demonstration in the project so far of why cumulative outcomes must be read cohort-aware.
+5. **Most of the catalog receives very little observable player attention.** 40.3% of all games have zero recorded reviews and 59.2% have fewer than 10 — consistent with Phase 1's finding that `estimated_owners` is bottom-heavy (~82% in its lowest one or two buckets).
+
+**Key methodological carryovers preserved from Phase 1** (still binding for Phase 2 and beyond):
+
+- The companion `steam_games_reviews.csv` file contains critic/press pull-quotes, not player reviews, and was **not used** in Phase 2.
+- `genres`/`categories`/`estimated_owners` required normalization for two mixed serialization formats found in Phase 1 (`src/audit_utils.py` parsers, reused throughout Phase 2).
+- `price`, `estimated_owners`, `positive`/`negative`, `recommendations`, `peak_ccu`, and `average_playtime_forever` remain current-snapshot/cumulative values, not launch-time values — every Phase 2 finding above is framed accordingly (e.g. "current price," never "launch price").
+
+**Roadmap note:** Phase 2's cohort-confound finding (point 4 above) reinforces Phase 1's temporal-leakage caution — any future success-modeling work must condition on release cohort as a first-class variable, not an afterthought. See `outputs/phase2_market_findings.md` § Implications for Later Phases for the fuller rationale.
+
 **Downstream project design (NLP scope, success-modeling target, recommendation approach) is intentionally provisional and is not finalized in this README** — it is driven by the Phase 1 findings, which found the review data and success-outcome variables to be materially different from what was originally assumed. See the feasibility summary for the current recommended roadmap changes.
 
 ## Repository structure
@@ -50,18 +76,23 @@ steam-games-intelligence/
 ├── requirements.txt
 ├── .gitignore
 ├── notebooks/
-│   └── 01_data_audit_and_feasibility.ipynb
+│   ├── 01_data_audit_and_feasibility.ipynb
+│   └── 02_market_analytics.ipynb
 ├── src/
-│   └── audit_utils.py          # reusable parsing utilities discovered during the audit
+│   ├── audit_utils.py           # reusable parsing utilities discovered during the audit
+│   └── market_utils.py          # Phase 2 transforms (price tiers, cohort/genre helpers, games_clean builder)
 ├── figures/
-│   └── phase1/                 # diagnostic figures referenced in the audit
+│   ├── phase1/                  # diagnostic figures referenced in the audit
+│   └── phase2/                  # final market-analytics figures
 ├── data/
-│   ├── raw/                    # place steam_games.csv / steam_games_reviews.csv here (gitignored)
-│   └── processed/              # (empty in Phase 1)
+│   ├── raw/                     # place steam_games.csv / steam_games_reviews.csv here (gitignored)
+│   └── processed/
+│       └── games_clean.parquet  # normalized game-level table, regenerated from steam_games.csv (see notebook 02)
 └── outputs/
     ├── feasibility_summary.md
     ├── feature_role_audit.csv
-    └── join_summary.csv
+    ├── join_summary.csv
+    └── phase2_market_findings.md
 ```
 
 ## Setup

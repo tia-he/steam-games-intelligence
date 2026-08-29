@@ -1,0 +1,43 @@
+feature,role,likely_available_at_launch,post_launch_or_current,leakage_risk,notes
+app_id,identifier,yes,static,none,Canonical join key; unique in both files.
+name,descriptive metadata,yes,static,none,"137,664 unique / 139,076 rows; 1,411 duplicated names (not unique enough for joining)."
+release_date,descriptive metadata,yes,static,none,"138,993/139,076 parse; used to derive game age / exposure time."
+price,price metadata,ambiguous,current,moderate,"Documented as CURRENT price. Cannot be assumed equal to launch price; treat as temporally ambiguous, not launch-known."
+price_status,price metadata,ambiguous,current,moderate,Current paid/free/unavailable status; a game's price model can change after launch (e.g. F2P conversions).
+estimated_owners,ownership/popularity outcome,no,current cumulative,high,Coarse current-snapshot bucket (27 unique ranges); accumulates over the game's whole lifetime. Candidate target only with age-normalization.
+developers,developer/publisher metadata,yes,static,low,"List field; 86,963 unique developers; mostly 1 per game (median=1)."
+publishers,developer/publisher metadata,yes,static,low,"List field; 73,219 unique publishers; mostly 1 per game."
+genres,descriptive metadata (list-like),yes,static,low,"Two mixed serializations found (plain string list vs Steam-API dict list, ~29.5k rows); normalize before use."
+categories,descriptive metadata (list-like),yes,static,low,"Same dual-serialization issue as genres (~29.3k dict-list rows), same row subset."
+tags,descriptive metadata (list-like),ambiguous,static/current,low-moderate,"Community/SteamSpy tags can shift after launch as players tag the game; 55,624 rows have zero tags."
+positive,review outcome,no,current cumulative,high,Cumulative lifetime positive-review count; grows with exposure time. Do not use as a launch-time feature.
+negative,review outcome,no,current cumulative,high,Cumulative lifetime negative-review count; same leakage concern as positive.
+recommendations,review outcome,no,current cumulative,high,84% zero-inflated; cumulative; 21.9% missing.
+peak_ccu,engagement outcome,no,current cumulative,high,"All-time peak concurrent users; a lifetime-to-date maximum, cannot be known at launch."
+metacritic_score,review outcome (external),ambiguous,"near-launch, current field",moderate,"Critic score is typically set near launch, but 26.8% missing and most non-null values are 0 (unscored games); needs cleaning before use."
+user_score,review outcome,no,current cumulative / near-constant,low (data quality),99%+ of values are 0; column appears largely unpopulated/deprecated in this snapshot -- low usability regardless of leakage.
+average_playtime_forever,engagement outcome,no,current cumulative,high,91.4% zero; cumulative lifetime average playtime; strong leakage risk and weak signal due to zero-inflation.
+median_playtime_forever,engagement outcome,no,current cumulative,high,Median is 0 in essentially every release-year cohort observed; very low usability.
+average_playtime_2weeks,engagement outcome,no,current (rolling window),high,"Reflects current 2-week activity window, not historical/launch behavior."
+median_playtime_2weeks,engagement outcome,no,current (rolling window),high,Same rolling-window leakage concern as average_playtime_2weeks.
+short_description,descriptive metadata,yes,static (mostly),low,Marketing copy set at/near launch; can be edited later but low leakage risk.
+about_the_game,descriptive metadata,yes,static (mostly),low,"Same as short_description, longer form."
+detailed_description,descriptive metadata,yes,static (mostly),low,Store page long description.
+notes,descriptive metadata,yes,static,none,81.3% missing; sparse free-text flags (e.g. VR-only warnings).
+achievements,descriptive/engagement metadata,ambiguous,static (usually set pre-launch) but can change,low-moderate,11.7% missing; achievement count is usually fixed near launch but can be patched later.
+dlc_count,descriptive metadata,no,current cumulative,moderate,Grows over the game's lifetime as DLC is released after launch; not known at launch.
+packages,price/store metadata,ambiguous,current,moderate,"Current store bundle/pricing structure; reflects present-day storefront, not launch-time offer."
+supported_languages,descriptive metadata,ambiguous,static/current,low,Can expand post-launch as localizations are added.
+full_audio_languages,descriptive metadata,ambiguous,static/current,low,Same as supported_languages.
+windows,platform metadata,yes,static (mostly),low,"Platform support is normally set at launch, can change later."
+mac,platform metadata,yes,static (mostly),low,Same as windows.
+linux,platform metadata,yes,static (mostly),low,Same as windows.
+header_image,descriptive metadata (URL),yes,current,none,Store asset URL; not a modeling feature.
+screenshots,descriptive metadata (list-like URL),yes,current,none,Store asset URLs; not a modeling feature.
+movies,descriptive metadata (list-like URL),yes,current,none,Store asset URLs; not a modeling feature.
+website,descriptive metadata (URL),ambiguous,current,none,Not a modeling feature.
+support_url,descriptive metadata (URL),ambiguous,current,none,Not a modeling feature.
+support_email,descriptive metadata,ambiguous,current,none,17.3% missing; not a modeling feature.
+metacritic_url,descriptive metadata (URL),ambiguous,current,none,96.9% missing; not a modeling feature.
+steam_store_available,availability/source indicator,no,current,moderate,"Current storefront-listing status (True for 139,061/139,076); reflects present-day availability, not launch state; a delisted game will read False regardless of launch success."
+steam_spy_available,availability/source indicator,n/a,current,none,"Constant (True for all 139,076 rows in this snapshot) -- no discriminative value."

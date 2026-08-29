@@ -1,0 +1,2 @@
+games_unique_app_ids,reviews_unique_app_ids,matched_app_ids,games_only_app_ids,reviews_only_app_ids,match_pct_of_games,match_pct_of_reviews,name_mismatch_count_on_matched,name_mismatch_pct_on_matched,cardinality
+139076,13039,13039,126037,0,9.38,100.0,0,0.0,1:1 (both app_id columns unique; reviews is a subset of games)

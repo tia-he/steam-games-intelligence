@@ -86,6 +86,25 @@ Raw cumulative "success" is not directly usable in a single current-snapshot dat
 
 **Downstream project design (NLP scope, recommendation approach) beyond what Phase 3 fixed is intentionally still provisional and is not finalized in this README** — see the feasibility summary and Phase 3 decision report for the current recommended roadmap.
 
+## Phase 4 status: Cohort-Aware Visibility Modeling — complete
+
+The project's first predictive-modeling phase, built strictly on Phase 3's target/population/leakage decisions (not re-derived). See:
+
+- `notebooks/04_cohort_aware_visibility_modeling.ipynb` — the full experiment: question → leakage-safe setup → baselines → feature-family ablation → model selection → freeze → one-time test evaluation → interpretation → limitations
+- `outputs/phase4_modeling_results.md` — the full results writeup
+- `outputs/phase4_feature_manifest.csv` — every model feature traced to a source column and a leakage/temporal-status ruling
+- `figures/phase4/` — 7 figures, each tied to a specific modeling decision
+
+**Exact modeling question:** using observable store/catalog metadata, estimate whether a 2017-2023-released Steam game ranks among the top 20% highest-visibility titles (by total review count) within its own release-year cohort. **Chronological split:** train 2017-2021 (n=40,448) → validate 2022 (n=12,255) → test 2023 (n=14,538, evaluated once, untouched during development).
+
+**Final model:** LightGBM on a deliberately "conservative" feature set — genre/category, platform, release timing, point-in-time developer/publisher release history, and static store metadata (90 features, no missing values, no imputation needed). **Strongest results:** validation ROC-AUC 0.811 / PR-AUC 0.577; test (2023) ROC-AUC 0.801 / PR-AUC 0.553 — a small, honestly-reported drop consistent with real one-year-ahead chronological generalization, not overfitting.
+
+**Feature-ablation insight worth keeping:** a "broader snapshot" model that adds current price, achievements, language count, and community tags scores substantially higher (test-adjacent validation ROC-AUC 0.911) — but a large share of that gain traced back to features that are themselves partly *downstream of* popularity rather than independent of it. One category value, `Steam Trading Cards`, turned out to be an almost pure popularity proxy (Valve's card program has historically been gated by player engagement) and was removed outright; Steam tags require a minimum player-vote threshold before they even appear on a store page, so "having tags at all" is itself a faint popularity signal. The conservative model was selected as the frozen, tested model specifically because of this finding — higher validation performance was not treated as automatically better.
+
+**Limitation worth keeping:** validation error analysis shows the model's clearest blind spot is exactly what intuition would predict — budget-priced indie breakout hits from first-time developers are over-represented among high-confidence false negatives (Indie: 74% of misses vs. 64% overall). This is consistent with (not proof of) missing factors this dataset simply does not contain: marketing, franchise strength, gameplay quality, streamer/press attention, and wishlist momentum.
+
+**What this model does not claim:** commercial success, revenue, player satisfaction, pre-launch prediction, or any causal account of what drives visibility. It ranks *relative, cohort-conditioned, observed player attention* — nothing stronger.
+
 ## Repository structure
 
 ```
@@ -96,14 +115,17 @@ steam-games-intelligence/
 ├── notebooks/
 │   ├── 01_data_audit_and_feasibility.ipynb
 │   ├── 02_market_analytics.ipynb
-│   └── 03_success_definition_and_temporal_framing.ipynb
+│   ├── 03_success_definition_and_temporal_framing.ipynb
+│   └── 04_cohort_aware_visibility_modeling.ipynb
 ├── src/
 │   ├── audit_utils.py           # reusable parsing utilities discovered during the audit
-│   └── market_utils.py          # Phase 2 transforms (price tiers, cohort/genre helpers, games_clean builder)
+│   ├── market_utils.py          # Phase 2 transforms (price tiers, cohort/genre helpers, games_clean builder)
+│   └── modeling_utils.py        # Phase 4 transforms (multi-hot encoding, point-in-time prior counts, metrics)
 ├── figures/
 │   ├── phase1/                  # diagnostic figures referenced in the audit
 │   ├── phase2/                  # final market-analytics figures
-│   └── phase3/                  # success-definition / temporal-framing diagnostic figures
+│   ├── phase3/                  # success-definition / temporal-framing diagnostic figures
+│   └── phase4/                  # visibility-modeling figures (ablation, calibration, error analysis, etc.)
 ├── data/
 │   ├── raw/                     # place steam_games.csv / steam_games_reviews.csv here (gitignored)
 │   └── processed/
@@ -115,7 +137,12 @@ steam-games-intelligence/
     ├── join_summary.csv
     ├── phase2_market_findings.md
     ├── phase3_success_definition.md
-    └── phase3_leakage_map.csv
+    ├── phase3_leakage_map.csv
+    ├── phase4_modeling_results.md
+    ├── phase4_feature_manifest.csv
+    ├── phase4_ablation_results.csv
+    ├── phase4_validation_metrics.csv
+    └── phase4_test_metrics.csv
 ```
 
 ## Setup

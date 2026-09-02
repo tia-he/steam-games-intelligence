@@ -66,7 +66,25 @@ Phase 2 builds the structured-data analytical story of the Steam marketplace: ev
 
 **Roadmap note:** Phase 2's cohort-confound finding (point 4 above) reinforces Phase 1's temporal-leakage caution — any future success-modeling work must condition on release cohort as a first-class variable, not an afterthought. See `outputs/phase2_market_findings.md` § Implications for Later Phases for the fuller rationale.
 
-**Downstream project design (NLP scope, success-modeling target, recommendation approach) is intentionally provisional and is not finalized in this README** — it is driven by the Phase 1 findings, which found the review data and success-outcome variables to be materially different from what was originally assumed. See the feasibility summary for the current recommended roadmap changes.
+## Phase 3 status: Success Definition & Temporal Framing — complete
+
+Raw cumulative "success" is not directly usable in a single current-snapshot dataset: fields like `estimated_owners`, review counts, and `peak_ccu` mostly measure how long a game has been listed, not how well it did. Phase 3 is a methodological investigation (no model trained) that worked out whether — and exactly how — this dataset can support a defensible target for later modeling. See:
+
+- `notebooks/03_success_definition_and_temporal_framing.ipynb` — the full investigation, structured as problem → candidate approaches → evidence → decision (not a column-by-column EDA)
+- `outputs/phase3_success_definition.md` — the decision report (candidate evaluation, cohort-normalization experiments, final target/framing, and the decision gate)
+- `outputs/phase3_leakage_map.csv` — field-by-field leakage ruling for the recommended target
+- `figures/phase3/` — 7 diagnostic figures, each tied to a specific methodological question
+- `data/processed/modeling_frame.parquet` — the recommended modeling population (2017-2023, n=67,241) with target and leakage-safe predictors attached, `outcome_*`-prefixed columns marked audit-only
+
+**How Phase 3 addressed release-cohort bias:** Phase 2 showed raw popularity comparisons can be badly confounded by exposure time (the Massively Multiplayer example above). Phase 3 quantified this directly — raw `total_reviews` correlates with game age at Spearman rho = 0.569 — and tested three fixes: release-year cohort percentile (rho drops to 0.011), release-quarter percentile (equivalent, smaller cohorts), and a rolling ±90-day window, which was **tested and rejected** after it introduced a worse artifact of its own (rho = -0.392) caused by boundary truncation near the snapshot date.
+
+**Success definition chosen:** popularity/visibility (`total_reviews`, cohort-relative) and player reception (`positive_ratio`, support-thresholded) are kept as two separate, non-combined constructs — a composite score was tested and rejected as adding noise rather than information. No engagement-based target survives (playtime fields are >90% zero regardless of transformation).
+
+**Decision: GO for a narrowly-scoped supervised classification task** — see `outputs/phase3_success_definition.md` for the full specification. In one sentence, the defensible claim is: *using observable store/catalog metadata, estimate whether a 2017-2023-released game ranks among the top 20% highest-visibility titles within its own release-year cohort* — a claim about relative, cohort-conditioned observed player attention, explicitly **not** about revenue, launch-day success, or player satisfaction.
+
+**What Phase 4 will actually claim:** a classifier trained on non-leaking, largely-static metadata (genre, category, platform, developer/publisher identity, release timing, current price with its ambiguity noted), evaluated with a chronological split (train 2017-2021 / validate 2022 / test 2023, test period untouched during development), predicting cohort-relative visibility — not success, and not anything requiring a historical snapshot this dataset doesn't have.
+
+**Downstream project design (NLP scope, recommendation approach) beyond what Phase 3 fixed is intentionally still provisional and is not finalized in this README** — see the feasibility summary and Phase 3 decision report for the current recommended roadmap.
 
 ## Repository structure
 
@@ -77,22 +95,27 @@ steam-games-intelligence/
 ├── .gitignore
 ├── notebooks/
 │   ├── 01_data_audit_and_feasibility.ipynb
-│   └── 02_market_analytics.ipynb
+│   ├── 02_market_analytics.ipynb
+│   └── 03_success_definition_and_temporal_framing.ipynb
 ├── src/
 │   ├── audit_utils.py           # reusable parsing utilities discovered during the audit
 │   └── market_utils.py          # Phase 2 transforms (price tiers, cohort/genre helpers, games_clean builder)
 ├── figures/
 │   ├── phase1/                  # diagnostic figures referenced in the audit
-│   └── phase2/                  # final market-analytics figures
+│   ├── phase2/                  # final market-analytics figures
+│   └── phase3/                  # success-definition / temporal-framing diagnostic figures
 ├── data/
 │   ├── raw/                     # place steam_games.csv / steam_games_reviews.csv here (gitignored)
 │   └── processed/
-│       └── games_clean.parquet  # normalized game-level table, regenerated from steam_games.csv (see notebook 02)
+│       ├── games_clean.parquet     # normalized game-level table, regenerated from steam_games.csv (see notebook 02)
+│       └── modeling_frame.parquet  # 2017-2023 modeling population + target + leakage-safe predictors (see notebook 03)
 └── outputs/
     ├── feasibility_summary.md
     ├── feature_role_audit.csv
     ├── join_summary.csv
-    └── phase2_market_findings.md
+    ├── phase2_market_findings.md
+    ├── phase3_success_definition.md
+    └── phase3_leakage_map.csv
 ```
 
 ## Setup

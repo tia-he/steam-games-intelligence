@@ -1,131 +1,122 @@
 # Steam Games Intelligence
 
-A portfolio data science project exploring what can be learned from a snapshot of the Steam catalog — game metadata, market/pricing structure, critical reception, and (potentially) success factors and game-to-game similarity.
+A six-phase data science project on a ~139K-game snapshot of the Steam catalog: what a current, imperfect
+snapshot of a large real-world marketplace can — and cannot — reliably tell us about market structure, game
+visibility, and content similarity. Every phase starts by auditing what the data actually supports, then
+scopes the analysis to match; several planned directions were narrowed or rejected outright once the evidence
+came in, and that discipline is the project's actual throughline, not any single model or chart.
 
-## Motivation
+## Executive Summary
 
-The guiding question is: **"What makes a Steam game successful, how do players/critics respond to games, and what can we learn from similar games?"**
+*(~45 seconds)*
 
-This is a large, ambitious question, and the honest answer depends entirely on what the available data can actually support. Rather than assuming a fixed roadmap, this project starts with a rigorous data audit (Phase 1) and lets the findings determine which downstream modules are realistic.
+- **Phase 1's data audit changed the roadmap before any modeling began.** The companion "reviews" file,
+  documented as up to ~100 structured player reviews per game, turned out empirically to contain a handful of
+  concatenated critic/press pull-quotes with no per-review structure — eliminating any player-sentiment/review-NLP
+  module outright.
+- **Steam's catalog supply is extremely fragmented and long-tail dominated**: ~77% of developers/publishers
+  appear in only one catalog record, and ~40% of all games have zero recorded reviews.
+- **Raw cumulative popularity is severely confounded by release-date exposure time** (older games have simply
+  had longer to accumulate reviews) — Spearman rho = 0.569 between raw review count and game age. A
+  release-year cohort-percentile fix, tested against two rejected alternatives, reduces this to rho = 0.011.
+- **A leakage-controlled LightGBM classifier**, trained only on static/point-in-time metadata with a strict
+  chronological train/validate/test split, predicts cohort-relative visibility at test ROC-AUC 0.80 — and a
+  "broader snapshot" variant reaching ROC-AUC 0.91 was deliberately **not** selected as the frozen model once
+  a material share of its gain was traced back to features partly downstream of the popularity it predicts.
+- **A hybrid structured + semantic representation enables content-based game discovery** (not personalized
+  recommendation — no purchase/rating data exists) across the full catalog, with structured and semantic
+  similarity scores shown to be genuinely complementary (Pearson r = -0.27 on the same candidates).
+- **Combining the visibility model with content similarity** (Phase 6) shows that a game's closest content
+  peers are frequently far more or less visible than itself, robustly across K, franchise handling, and
+  temporal design choices — Steam's long-tail structure reappears *inside* narrow content niches, not only
+  across the catalog as a whole.
 
-## Dataset
+## Why This Project Is Methodologically Different
 
-Two raw CSV files, joined on `app_id`:
+Most portfolio projects on this kind of dataset start from "predict success" and work backward. This one
+starts from a rigorous, empirical audit of what a single-snapshot, 42-column CSV can actually support, and
+lets the answer shape the plan. That audit surfaced two structural constraints — a mislabeled text field and a
+cumulative-outcome/exposure-time confound — that are binding for every later phase, and several methods tested
+in this project were deliberately **rejected after being built and evaluated**, not just avoided in theory: a
+rolling-window cohort normalization that introduced a worse artifact than the confound it fixed, a composite
+success score that added noise rather than information, and a higher-scoring "broader" visibility model whose
+gain leaned on popularity-downstream features. Stating what the data cannot support turned out to be as
+valuable as what it can.
 
-- **`steam_games.csv`** — ~139K rows, 42 columns of game metadata: pricing, genres/categories/tags, developer/publisher, review and popularity counts, playtime, platform support, store descriptions, and availability flags.
-- **`steam_games_reviews.csv`** — ~13K rows (a subset of the games above) with a free-text `reviews` field. **Phase 1 found this field does not match its original documentation**: rather than up to ~100 structured user reviews per game, it contains a small number (median 3, max 10) of concatenated critic/press pull-quotes scraped from the Steam store page, with no structured per-review fields. See `outputs/feasibility_summary.md` for the full finding.
+## Data
 
-Both files are a **current snapshot** of a live, daily-updated dataset — not a historical record.
+Two raw CSVs, joined on `app_id`:
 
-### Obtaining the raw data
+- **`steam_games.csv`** — ~139K rows, 42 columns: pricing, genres/categories/tags, developer/publisher,
+  review/popularity counts, playtime, platform support, store descriptions, availability flags.
+- **`steam_games_reviews.csv`** — ~13K rows with a free-text field that Phase 1 found does not match its
+  documentation: a small number (median 3, max 10) of concatenated critic/press pull-quotes, not player
+  reviews.
 
-The raw CSVs are not committed to this repository (they're large, and one is ~900 MB). Place them at:
+Both are a **current snapshot** (2026-08-28) of a live, daily-updated dataset, not a historical record — see
+[Methodological note](#methodological-note-snapshot-data-and-leakage-risk) below. Not committed to the repo
+(one file is ~900 MB); place them at `data/raw/steam_games.csv` and `data/raw/steam_games_reviews.csv`.
 
-```
-data/raw/steam_games.csv
-data/raw/steam_games_reviews.csv
-```
+## Key Findings
 
-## Methodological note: snapshot data and leakage risk
+### Market Structure
 
-Because the data is a single current-day snapshot, fields like `estimated_owners`, `positive`/`negative` review counts, `recommendations`, and `average_playtime_forever` are **cumulative outcomes measured today**, not values known at each game's launch. Older games have had more time to accumulate owners, reviews, and playtime than newer ones — Phase 1 confirms this exposure-time effect is severe (see `figures/phase1/05_outcome_vs_release_year_exposure_time.png`). `price` is documented as current price and cannot be assumed equal to launch price. Any future "success prediction" work must treat this as a first-class constraint rather than an afterthought — see `outputs/feasibility_summary.md` for how each module is scoped around it.
+Catalog growth is compositional, not uniform — Free To Play releases grew ~14.3x (2014-16 to 2023-25) vs.
+Action's ~5.8x — and supply is highly fragmented (~77% of developers/publishers appear in only one catalog
+record). A genre's all-time popularity ranking can fully invert once release cohort is controlled for
+(Massively Multiplayer: highest all-time median reviews, lowest among 2023-24 releases). Full detail:
+[`outputs/phase2_market_findings.md`](outputs/phase2_market_findings.md).
 
-## Phase 1 status: Data Audit & Feasibility — complete
+<img src="figures/phase2/fig9_review_volume_long_tail.png" width="640" alt="Long-tail cumulative distribution of total reviews">
 
-Phase 1 audits both files empirically (not from documentation assumptions), checks join feasibility and coverage bias, audits temporal/leakage risk for candidate outcome variables, and issues a GO / MODIFY / DROP call for each proposed module. See:
+### Visibility Modeling
 
-- `notebooks/01_data_audit_and_feasibility.ipynb` — the full walkthrough
-- `outputs/feasibility_summary.md` — the written findings and module-by-module recommendation
-- `outputs/feature_role_audit.csv` — per-column role/leakage classification
-- `outputs/join_summary.csv` — join coverage statistics
-- `figures/phase1/` — diagnostic figures
+Raw review counts are not a fair cross-game comparison (rho=0.569 vs. game age); a release-year cohort
+percentile removes the confound (rho=0.011) without the boundary artifact a rejected rolling-window approach
+introduced. A leakage-controlled LightGBM model on static, point-in-time-safe metadata predicts this
+cohort-relative visibility with real, chronologically-generalizing signal (test ROC-AUC 0.80). Full detail:
+[`outputs/phase3_success_definition.md`](outputs/phase3_success_definition.md),
+[`outputs/phase4_modeling_results.md`](outputs/phase4_modeling_results.md).
 
-## Phase 2 status: Steam Market Analytics — complete
+<img src="figures/phase3/fig4_raw_vs_cohort_normalized_age_dependence.png" width="640" alt="Cohort normalization removes the age dependence raw total_reviews has">
 
-Phase 2 builds the structured-data analytical story of the Steam marketplace: evolution of the catalog over time, supply-side crowding and concentration, current pricing structure, and player reception/popularity across market segments — all descriptive, cohort-aware, and free of causal claims. See:
+<img src="figures/phase4/fig1_feature_family_ablation.png" width="640" alt="Feature-family ablation: validation performance by cumulative feature set">
 
-- `notebooks/02_market_analytics.ipynb` — the full walkthrough (11 figures, organized around 4 research questions rather than individual columns)
-- `outputs/phase2_market_findings.md` — the written findings, evidence, and interpretation
-- `figures/phase2/` — final figures
-- `src/market_utils.py` — reusable Phase 2 transforms (built on top of `src/audit_utils.py`)
-- `data/processed/games_clean.parquet` — a small (~8 MB), deterministic, normalized game-level table regenerated from `steam_games.csv` (documented in the notebook; not treated as ground truth for coarse fields like ownership)
+### Game Similarity & Peer Benchmarking
 
-**Five strongest findings:**
+Structured metadata and semantic text embeddings capture genuinely different, weakly *negatively* correlated
+notions of "similar" (Pearson r = -0.27), motivating a transparent hybrid over a single "best" representation.
+Benchmarking each game's cohort-relative visibility against its purely content-selected peers (Phase 6) shows
+this relationship is robust to reasonable design choices and reveals that Steam's long tail reappears *inside*
+narrow content niches — even highly visible games are typically surrounded by far less visible content peers.
+Full detail: [`outputs/phase5_similarity_findings.md`](outputs/phase5_similarity_findings.md),
+[`outputs/phase6_peer_benchmarking_findings.md`](outputs/phase6_peer_benchmarking_findings.md).
 
-1. **Catalog growth is compositional, not uniform.** Comparing 2014-2016 to 2023-2025 release cohorts (catalog grew ~7.2x overall), Free To Play releases grew ~14.3x and Early Access ~10.3x, while Action (~5.8x) and Strategy (~6.4x) grew slowest — Action's and Strategy's *share* of releases actually declined even as absolute counts rose. The free-release share climbed from 3.5% (2010) to ~26% (2024-2025).
-2. **Steam's catalog supply is highly fragmented, not publisher-dominated.** Across 86,963 unique developers and 73,219 unique publishers, ~77% of each appear in only one catalog record, and the top-10 developers combined hold just 1.1% of all developer-game links (a *catalog/release-count* concentration measure, not revenue).
-3. **Extreme prices (up to $107,500) are explainable, not data errors** — a mix of deliberate novelty/shock listings and legitimate professional creative-software titles sold through the game storefront (e.g. Houdini Indie, VEGAS Edit). Typical pricing is far more modest: median paid price $5.99, 90th percentile $19.99.
-4. **A genre's all-time popularity ranking can fully invert once release cohort is controlled for.** Massively Multiplayer has the highest all-time median review count of any major genre (17) — driven by a handful of long-lived legacy titles — but the 2023-2024 release cohort's MMO median collapses to 1, the lowest of any genre shown. This is the clearest demonstration in the project so far of why cumulative outcomes must be read cohort-aware.
-5. **Most of the catalog receives very little observable player attention.** 40.3% of all games have zero recorded reviews and 59.2% have fewer than 10 — consistent with Phase 1's finding that `estimated_owners` is bottom-heavy (~82% in its lowest one or two buckets).
+<img src="figures/phase5/fig4_structured_vs_semantic_scatter.png" width="640" alt="Structured vs semantic similarity scores are weakly negatively correlated">
 
-**Key methodological carryovers preserved from Phase 1** (still binding for Phase 2 and beyond):
+<img src="figures/phase6/07_long_tail_connection.png" width="640" alt="Even highly-visible games sit in content niches dominated by far less visible peers">
 
-- The companion `steam_games_reviews.csv` file contains critic/press pull-quotes, not player reviews, and was **not used** in Phase 2.
-- `genres`/`categories`/`estimated_owners` required normalization for two mixed serialization formats found in Phase 1 (`src/audit_utils.py` parsers, reused throughout Phase 2).
-- `price`, `estimated_owners`, `positive`/`negative`, `recommendations`, `peak_ccu`, and `average_playtime_forever` remain current-snapshot/cumulative values, not launch-time values — every Phase 2 finding above is framed accordingly (e.g. "current price," never "launch price").
+## Methodology / Project Pipeline
 
-**Roadmap note:** Phase 2's cohort-confound finding (point 4 above) reinforces Phase 1's temporal-leakage caution — any future success-modeling work must condition on release cohort as a first-class variable, not an afterthought. See `outputs/phase2_market_findings.md` § Implications for Later Phases for the fuller rationale.
+Each phase answers one question and hands a fixed, documented decision to the next — nothing downstream
+silently re-derives an earlier phase's population, target, or leakage ruling.
 
-## Phase 3 status: Success Definition & Temporal Framing — complete
+| Phase | Question | Status |
+|---|---|---|
+| 1. Data Audit & Feasibility | What data do we actually have? | Complete |
+| 2. Steam Market Analytics | What does the Steam marketplace look like? | Complete |
+| 3. Success Definition & Temporal Framing | What does "visibility" legitimately mean in a snapshot? | Complete |
+| 4. Cohort-Aware Visibility Modeling | How much visibility signal exists in leakage-controlled metadata? | Complete |
+| 5. Game Representation & Content-Based Similarity | How can games be represented for content-based discovery? | Complete |
+| 6. Similar-Game Peer Benchmarking & Portfolio Synthesis | What happens when we benchmark visibility against content-similar peers? | Complete |
 
-Raw cumulative "success" is not directly usable in a single current-snapshot dataset: fields like `estimated_owners`, review counts, and `peak_ccu` mostly measure how long a game has been listed, not how well it did. Phase 3 is a methodological investigation (no model trained) that worked out whether — and exactly how — this dataset can support a defensible target for later modeling. See:
+## Selected Visuals
 
-- `notebooks/03_success_definition_and_temporal_framing.ipynb` — the full investigation, structured as problem → candidate approaches → evidence → decision (not a column-by-column EDA)
-- `outputs/phase3_success_definition.md` — the decision report (candidate evaluation, cohort-normalization experiments, final target/framing, and the decision gate)
-- `outputs/phase3_leakage_map.csv` — field-by-field leakage ruling for the recommended target
-- `figures/phase3/` — 7 diagnostic figures, each tied to a specific methodological question
-- `data/processed/modeling_frame.parquet` — the recommended modeling population (2017-2023, n=67,241) with target and leakage-safe predictors attached, `outcome_*`-prefixed columns marked audit-only
+The five figures above are the project's hero visuals — one per major thread (market structure, temporal
+confounding, model ablation, representation comparison, peer benchmarking). Each phase report and notebook
+contains its own full figure set (`figures/phase1/` through `figures/phase6/`, 7 figures each on average).
 
-**How Phase 3 addressed release-cohort bias:** Phase 2 showed raw popularity comparisons can be badly confounded by exposure time (the Massively Multiplayer example above). Phase 3 quantified this directly — raw `total_reviews` correlates with game age at Spearman rho = 0.569 — and tested three fixes: release-year cohort percentile (rho drops to 0.011), release-quarter percentile (equivalent, smaller cohorts), and a rolling ±90-day window, which was **tested and rejected** after it introduced a worse artifact of its own (rho = -0.392) caused by boundary truncation near the snapshot date.
-
-**Success definition chosen:** popularity/visibility (`total_reviews`, cohort-relative) and player reception (`positive_ratio`, support-thresholded) are kept as two separate, non-combined constructs — a composite score was tested and rejected as adding noise rather than information. No engagement-based target survives (playtime fields are >90% zero regardless of transformation).
-
-**Decision: GO for a narrowly-scoped supervised classification task** — see `outputs/phase3_success_definition.md` for the full specification. In one sentence, the defensible claim is: *using observable store/catalog metadata, estimate whether a 2017-2023-released game ranks among the top 20% highest-visibility titles within its own release-year cohort* — a claim about relative, cohort-conditioned observed player attention, explicitly **not** about revenue, launch-day success, or player satisfaction.
-
-**What Phase 4 will actually claim:** a classifier trained on non-leaking, largely-static metadata (genre, category, platform, developer/publisher identity, release timing, current price with its ambiguity noted), evaluated with a chronological split (train 2017-2021 / validate 2022 / test 2023, test period untouched during development), predicting cohort-relative visibility — not success, and not anything requiring a historical snapshot this dataset doesn't have.
-
-**Downstream project design (NLP scope, recommendation approach) beyond what Phase 3 fixed is intentionally still provisional and is not finalized in this README** — see the feasibility summary and Phase 3 decision report for the current recommended roadmap.
-
-## Phase 4 status: Cohort-Aware Visibility Modeling — complete
-
-The project's first predictive-modeling phase, built strictly on Phase 3's target/population/leakage decisions (not re-derived). See:
-
-- `notebooks/04_cohort_aware_visibility_modeling.ipynb` — the full experiment: question → leakage-safe setup → baselines → feature-family ablation → model selection → freeze → one-time test evaluation → interpretation → limitations
-- `outputs/phase4_modeling_results.md` — the full results writeup
-- `outputs/phase4_feature_manifest.csv` — every model feature traced to a source column and a leakage/temporal-status ruling
-- `figures/phase4/` — 7 figures, each tied to a specific modeling decision
-
-**Exact modeling question:** using observable store/catalog metadata, estimate whether a 2017-2023-released Steam game ranks among the top 20% highest-visibility titles (by total review count) within its own release-year cohort. **Chronological split:** train 2017-2021 (n=40,448) → validate 2022 (n=12,255) → test 2023 (n=14,538, evaluated once, untouched during development).
-
-**Final model:** LightGBM on a deliberately "conservative" feature set — genre/category, platform, release timing, point-in-time developer/publisher release history, and static store metadata (90 features, no missing values, no imputation needed). **Strongest results:** validation ROC-AUC 0.811 / PR-AUC 0.577; test (2023) ROC-AUC 0.801 / PR-AUC 0.553 — a small, honestly-reported drop consistent with real one-year-ahead chronological generalization, not overfitting.
-
-**Feature-ablation insight worth keeping:** a "broader snapshot" model that adds current price, achievements, language count, and community tags scores substantially higher (test-adjacent validation ROC-AUC 0.911) — but a large share of that gain traced back to features that are themselves partly *downstream of* popularity rather than independent of it. One category value, `Steam Trading Cards`, turned out to be an almost pure popularity proxy (Valve's card program has historically been gated by player engagement) and was removed outright; Steam tags require a minimum player-vote threshold before they even appear on a store page, so "having tags at all" is itself a faint popularity signal. The conservative model was selected as the frozen, tested model specifically because of this finding — higher validation performance was not treated as automatically better.
-
-**Limitation worth keeping:** validation error analysis shows the model's clearest blind spot is exactly what intuition would predict — budget-priced indie breakout hits from first-time developers are over-represented among high-confidence false negatives (Indie: 74% of misses vs. 64% overall). This is consistent with (not proof of) missing factors this dataset simply does not contain: marketing, franchise strength, gameplay quality, streamer/press attention, and wishlist momentum.
-
-**What this model does not claim:** commercial success, revenue, player satisfaction, pre-launch prediction, or any causal account of what drives visibility. It ranks *relative, cohort-conditioned, observed player attention* — nothing stronger.
-
-## Phase 5 status: Game Representation & Content-Based Similarity — complete
-
-A shift away from success/visibility prediction: does not tune or extend the Phase 4 model. See:
-
-- `notebooks/05_game_representation_and_similarity.ipynb` — question → representation audit → baseline representations → semantic representation → evaluation design → comparison → failure analysis → final decision
-- `outputs/phase5_similarity_findings.md` — the full results writeup
-- `outputs/phase5_representation_audit.csv`, `outputs/phase5_anchor_games.csv`, `outputs/phase5_neighbor_comparison.csv`
-- `figures/phase5/` — 7 figures
-- `src/similarity_utils.py` — reusable Phase 5 transforms
-
-**Research question:** how can Steam games be represented so nearest neighbors correspond to meaningful game-to-game similarity? **This is content-based discovery, not personalized recommendation** — the dataset has no purchases, ratings, or play histories, so nothing here claims collaborative filtering or recommendation accuracy.
-
-**Representations compared:** structured metadata (genres/categories/tags, equal-weighted after evidence-based sensitivity testing), TF-IDF description text, semantic embeddings (`all-MiniLM-L6-v2`, run locally, no paid API), and a transparent score-level hybrid. **Final decision:** hybrid (alpha=0.5) as the recommended default — not because it automatically wins, but because structured and semantic scores turned out weakly *negatively* correlated (Pearson r = -0.27) on the same candidates, confirming genuine complementarity; all four representations remain independently selectable in `find_similar_games()`.
-
-**Strong case-study insight:** for *Hades*, structured metadata alone recovers Supergiant Games' entire other catalog (`Hades II`, `Bastion`, `Transistor`, `Pyre`) — *without developer identity ever being a feature*. A companion failure case: semantic embeddings for *Disco Elysium - The Final Cut* return unrelated games sharing only the edition label "Final Cut," traced to that phrase appearing in Disco Elysium's own description text.
-
-**Limitation worth keeping:** retrieval is systematically biased *away* from popular titles (not toward them, as hypothesized) — text-based representations most strongly — plausibly because the anchor set skews popular while the catalog itself is long-tail dominated (Phase 2). Reported as a representation characteristic, not corrected.
-
-**A mid-phase data-quality discovery:** tags have a third serialization format (vote-count JSON objects, 16.4% of the catalog) that the shared Phase 1 parser silently read as empty — including for titles like *Stardew Valley*. Fixed with an additive parser (`src/audit_utils.py::parse_tags_field`); genres/categories were confirmed unaffected.
-
-## Repository structure
+## Repository Structure
 
 ```
 steam-games-intelligence/
@@ -137,46 +128,106 @@ steam-games-intelligence/
 │   ├── 02_market_analytics.ipynb
 │   ├── 03_success_definition_and_temporal_framing.ipynb
 │   ├── 04_cohort_aware_visibility_modeling.ipynb
-│   └── 05_game_representation_and_similarity.ipynb
+│   ├── 05_game_representation_and_similarity.ipynb
+│   └── 06_peer_benchmarking_and_synthesis.ipynb
 ├── src/
-│   ├── audit_utils.py           # reusable parsing utilities discovered during the audit
-│   ├── market_utils.py          # Phase 2 transforms (price tiers, cohort/genre helpers, games_clean builder)
-│   ├── modeling_utils.py        # Phase 4 transforms (multi-hot encoding, point-in-time prior counts, metrics)
-│   └── similarity_utils.py      # Phase 5 transforms (structured/TF-IDF representations, retrieval, hybrid scoring)
+│   ├── audit_utils.py            # reusable parsing utilities discovered during the audit
+│   ├── market_utils.py           # Phase 2 transforms (price tiers, cohort/genre helpers, games_clean builder)
+│   ├── modeling_utils.py         # Phase 4 transforms (multi-hot encoding, point-in-time prior counts, metrics)
+│   ├── similarity_utils.py       # Phase 5 transforms (structured/TF-IDF representations, retrieval, hybrid scoring)
+│   └── peer_benchmark_utils.py   # Phase 6 transforms (batched retrieval, peer-relative visibility gap)
 ├── figures/
-│   ├── phase1/                  # diagnostic figures referenced in the audit
-│   ├── phase2/                  # final market-analytics figures
-│   ├── phase3/                  # success-definition / temporal-framing diagnostic figures
-│   ├── phase4/                  # visibility-modeling figures (ablation, calibration, error analysis, etc.)
-│   └── phase5/                  # representation/similarity figures (coherence, bias, alpha sensitivity, etc.)
+│   ├── phase1/ … phase6/         # each phase's diagnostic/final figures
 ├── data/
-│   ├── raw/                     # place steam_games.csv / steam_games_reviews.csv here (gitignored)
+│   ├── raw/                      # place steam_games.csv / steam_games_reviews.csv here (gitignored)
 │   └── processed/
-│       ├── games_clean.parquet         # normalized game-level table, regenerated from steam_games.csv (see notebook 02)
-│       ├── modeling_frame.parquet      # 2017-2023 modeling population + target + leakage-safe predictors (see notebook 03)
-│       ├── similarity_frame.parquet    # similarity population + normalized text/metadata (gitignored, ~123MB, see notebook 05)
-│       └── similarity_embeddings.npy   # cached MiniLM embeddings (gitignored, ~199MB, see notebook 05)
+│       ├── games_clean.parquet         # normalized game-level table (see notebook 02)
+│       ├── modeling_frame.parquet      # 2017-2023 modeling population + target + predictors (see notebook 03)
+│       ├── similarity_frame.parquet    # similarity population + normalized text/metadata (gitignored, ~123MB, notebook 05)
+│       └── similarity_embeddings.npy   # cached MiniLM embeddings (gitignored, ~199MB, notebook 05, reused unchanged by notebook 06)
 └── outputs/
-    ├── feasibility_summary.md
-    ├── feature_role_audit.csv
-    ├── join_summary.csv
-    ├── phase2_market_findings.md
-    ├── phase3_success_definition.md
-    ├── phase3_leakage_map.csv
-    ├── phase4_modeling_results.md
-    ├── phase4_feature_manifest.csv
-    ├── phase4_ablation_results.csv
-    ├── phase4_validation_metrics.csv
-    ├── phase4_test_metrics.csv
-    ├── phase5_similarity_findings.md
-    ├── phase5_representation_audit.csv
-    ├── phase5_anchor_games.csv
-    └── phase5_neighbor_comparison.csv
+    ├── feasibility_summary.md, feature_role_audit.csv, join_summary.csv        (Phase 1)
+    ├── phase2_market_findings.md                                              (Phase 2)
+    ├── phase3_success_definition.md, phase3_leakage_map.csv                   (Phase 3)
+    ├── phase4_modeling_results.md, phase4_feature_manifest.csv, ...           (Phase 4)
+    ├── phase5_similarity_findings.md, phase5_anchor_games.csv, ...            (Phase 5)
+    ├── phase6_peer_benchmarking_findings.md, phase6_peer_benchmarks.csv, ...  (Phase 6)
+    └── final_project_summary.md                                              (project-level technical synthesis)
 ```
 
-## Setup
+## Reproducibility
 
 ```bash
 pip install -r requirements.txt
+# place steam_games.csv and steam_games_reviews.csv under data/raw/
 jupyter notebook notebooks/01_data_audit_and_feasibility.ipynb
 ```
+
+Run notebooks **in order, 01 → 06** — each writes a `data/processed/*.parquet` or `outputs/*` artifact the
+next notebook reads back. `games_clean.parquet` and `modeling_frame.parquet` are small and committed to the
+repo; `similarity_frame.parquet` and `similarity_embeddings.npy` (notebook 05) are large, deterministic, and
+git-ignored — they regenerate locally from `steam_games.csv`. **The semantic embedding step in notebook 05
+took ~22 minutes of CPU time on the development machine** (a mid-range laptop, no GPU); every later notebook,
+including 06, loads that cached `.npy` file rather than recomputing it. No other step in the project takes
+more than a few minutes.
+
+## Limitations
+
+1. Single current snapshot (2026-08-28) — not a historical or panel dataset.
+2. Cumulative outcomes cannot support true pre-launch forecasting.
+3. The `reviews` file contains critic pull-quotes, not player-review text — no player-sentiment analysis is
+   possible with this data.
+4. Content similarity (Phase 5-6) has no independent user-preference ground truth to validate against.
+5. Some current store metadata (price, tags, achievements) is downstream/temporally ambiguous relative to
+   launch and was excluded from, or flagged within, the frozen Phase 4 model accordingly.
+6. Phase 6 peer benchmarking is descriptive, not causal — it identifies *where* visibility diverges from
+   content peers, never *why*.
+
+## Detailed Phase Reports
+
+Each phase's full write-up, evidence, and figures live in its own notebook + `outputs/*.md` report — the
+README stays a portfolio overview, these carry the methodological detail:
+
+- **Phase 1:** [`outputs/feasibility_summary.md`](outputs/feasibility_summary.md) · `notebooks/01_data_audit_and_feasibility.ipynb`
+- **Phase 2:** [`outputs/phase2_market_findings.md`](outputs/phase2_market_findings.md) · `notebooks/02_market_analytics.ipynb`
+- **Phase 3:** [`outputs/phase3_success_definition.md`](outputs/phase3_success_definition.md) · `notebooks/03_success_definition_and_temporal_framing.ipynb`
+- **Phase 4:** [`outputs/phase4_modeling_results.md`](outputs/phase4_modeling_results.md) · `notebooks/04_cohort_aware_visibility_modeling.ipynb`
+- **Phase 5:** [`outputs/phase5_similarity_findings.md`](outputs/phase5_similarity_findings.md) · `notebooks/05_game_representation_and_similarity.ipynb`
+- **Phase 6:** [`outputs/phase6_peer_benchmarking_findings.md`](outputs/phase6_peer_benchmarking_findings.md) · `notebooks/06_peer_benchmarking_and_synthesis.ipynb`
+- **Project-level technical synthesis:** [`outputs/final_project_summary.md`](outputs/final_project_summary.md)
+
+## What This Project Demonstrates
+
+- **Empirical data-quality auditing** — every structural claim about the dataset (the reviews-field mismatch,
+  the two/three list-serialization formats, the exposure-time confound) was discovered by inspecting the
+  data, not assumed from documentation.
+- **Large tabular data processing** — a 139K-row, 42-column, ~900 MB CSV handled without chunking; a
+  129,847 x 384 semantic embedding matrix built and cached locally.
+- **Product/market analytics** — cohort-aware, causally-cautious descriptive analysis of a real two-sided
+  marketplace.
+- **Temporal leakage control and chronological validation** — point-in-time developer/publisher features,
+  a strict train/validate/test split by release year, individual-feature leakage rulings (not just family-level).
+- **Interpretable gradient boosting with honest ablation** — LightGBM with a documented feature-family
+  ablation, and a deliberate choice of a lower-scoring model once a leakage-adjacent confound was found in the
+  higher-scoring one.
+- **Sparse text representation and sentence embeddings** — TF-IDF and locally-run transformer embeddings
+  (`sentence-transformers`), compared rather than assumed interchangeable.
+- **Similarity retrieval at scale** — batched dense/sparse top-K retrieval across ~130K and ~64K-game
+  corpora, with a documented, vectorized franchise-suppression heuristic.
+- **Error and failure analysis** — validation error-composition breakdowns (Phase 4), representation failure
+  cases (Phase 5), and a flagged weak-peer-set case study (Phase 6) — each treated as a finding, not an
+  afterthought.
+- **Reproducible analytical design** — every phase's population, target, and leakage decisions are
+  materialized as versioned artifacts (`outputs/*.csv`, `data/processed/*.parquet`) that later phases read
+  back rather than re-derive.
+
+## Methodological note: snapshot data and leakage risk
+
+Because the data is a single current-day snapshot, fields like `estimated_owners`, `positive`/`negative`
+review counts, `recommendations`, and `average_playtime_forever` are **cumulative outcomes measured today**,
+not values known at each game's launch. Older games have had more time to accumulate owners, reviews, and
+playtime than newer ones — Phase 1 confirms this exposure-time effect is severe (see
+`figures/phase1/05_outcome_vs_release_year_exposure_time.png`). `price` is documented as current price and
+cannot be assumed equal to launch price. Every predictive/descriptive claim in this project is scoped around
+this constraint — see `outputs/feasibility_summary.md` for how each module was originally scoped, and
+`outputs/final_project_summary.md` for the full accounting of what was rejected along the way.

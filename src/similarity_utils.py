@@ -174,10 +174,19 @@ def resolve_query(df: pd.DataFrame, query) -> list:
 # Explanation
 # --------------------------------------------------------------------------
 
+def _as_set(v):
+    """None-safe set() -- also handles the numpy-array-valued list columns produced
+    by a parquet round-trip (e.g. a cached similarity_frame.parquet), where `v or []`
+    raises ambiguous-truth-value instead of falling back to []."""
+    if v is None:
+        return set()
+    return set(v)
+
+
 def explain_overlap(df: pd.DataFrame, i: int, j: int) -> dict:
-    gi, gj = set(df['genre_list'].iloc[i] or []), set(df['genre_list'].iloc[j] or [])
-    ci, cj = set(df['category_list'].iloc[i] or []), set(df['category_list'].iloc[j] or [])
-    ti, tj = set(df['tag_list'].iloc[i] or []), set(df['tag_list'].iloc[j] or [])
+    gi, gj = _as_set(df['genre_list'].iloc[i]), _as_set(df['genre_list'].iloc[j])
+    ci, cj = _as_set(df['category_list'].iloc[i]), _as_set(df['category_list'].iloc[j])
+    ti, tj = _as_set(df['tag_list'].iloc[i]), _as_set(df['tag_list'].iloc[j])
     return {
         'shared_genres': sorted(gi & gj),
         'shared_categories': sorted(ci & cj),

@@ -66,6 +66,40 @@ def parse_list_field(s):
     return v
 
 
+def parse_tags_field(s):
+    """Parse the 'tags' column specifically.
+
+    Discovered in Phase 5: tags have a THIRD serialization format beyond the two
+    parse_list_field handles -- a JSON object mapping tag name to community vote
+    count, e.g. {"Farming Sim": 7935, "Pixel Graphics": 7389, ...} (16.4% of the
+    catalog, 22,806 rows -- including well-known, heavily-tagged titles such as
+    Stardew Valley). parse_list_field silently returns None for this format since
+    it isn't a list, which was undercounting real tag coverage. genres/categories
+    were checked and confirmed NOT to have this dict format -- this fix is tags-only
+    and does not change parse_list_field's behavior for any other column.
+
+    Returns a list of tag names ordered by descending vote count for the dict
+    format (vote counts themselves are discarded -- this returns tag *presence*,
+    consistent with how the list-format tags are used elsewhere, not a popularity
+    signal). Falls back to parse_list_field's list-format handling otherwise.
+    """
+    if pd.isna(s):
+        return None
+    s = str(s).strip()
+    if s in ("", "[]", "{}"):
+        return []
+    try:
+        v = json.loads(s)
+    except Exception:
+        try:
+            v = ast.literal_eval(s)
+        except Exception:
+            return None
+    if isinstance(v, dict):
+        return [k for k, _ in sorted(v.items(), key=lambda kv: -kv[1])]
+    return parse_list_field(s)
+
+
 def estimated_owners_format(s) -> str:
     """Two delimiter/format conventions were found for estimated_owners:
     '0 - 20000' and '0 .. 20,000'. Returns 'dash', 'dotdot', 'null' or 'other'.

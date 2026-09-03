@@ -105,6 +105,26 @@ The project's first predictive-modeling phase, built strictly on Phase 3's targe
 
 **What this model does not claim:** commercial success, revenue, player satisfaction, pre-launch prediction, or any causal account of what drives visibility. It ranks *relative, cohort-conditioned, observed player attention* — nothing stronger.
 
+## Phase 5 status: Game Representation & Content-Based Similarity — complete
+
+A shift away from success/visibility prediction: does not tune or extend the Phase 4 model. See:
+
+- `notebooks/05_game_representation_and_similarity.ipynb` — question → representation audit → baseline representations → semantic representation → evaluation design → comparison → failure analysis → final decision
+- `outputs/phase5_similarity_findings.md` — the full results writeup
+- `outputs/phase5_representation_audit.csv`, `outputs/phase5_anchor_games.csv`, `outputs/phase5_neighbor_comparison.csv`
+- `figures/phase5/` — 7 figures
+- `src/similarity_utils.py` — reusable Phase 5 transforms
+
+**Research question:** how can Steam games be represented so nearest neighbors correspond to meaningful game-to-game similarity? **This is content-based discovery, not personalized recommendation** — the dataset has no purchases, ratings, or play histories, so nothing here claims collaborative filtering or recommendation accuracy.
+
+**Representations compared:** structured metadata (genres/categories/tags, equal-weighted after evidence-based sensitivity testing), TF-IDF description text, semantic embeddings (`all-MiniLM-L6-v2`, run locally, no paid API), and a transparent score-level hybrid. **Final decision:** hybrid (alpha=0.5) as the recommended default — not because it automatically wins, but because structured and semantic scores turned out weakly *negatively* correlated (Pearson r = -0.27) on the same candidates, confirming genuine complementarity; all four representations remain independently selectable in `find_similar_games()`.
+
+**Strong case-study insight:** for *Hades*, structured metadata alone recovers Supergiant Games' entire other catalog (`Hades II`, `Bastion`, `Transistor`, `Pyre`) — *without developer identity ever being a feature*. A companion failure case: semantic embeddings for *Disco Elysium - The Final Cut* return unrelated games sharing only the edition label "Final Cut," traced to that phrase appearing in Disco Elysium's own description text.
+
+**Limitation worth keeping:** retrieval is systematically biased *away* from popular titles (not toward them, as hypothesized) — text-based representations most strongly — plausibly because the anchor set skews popular while the catalog itself is long-tail dominated (Phase 2). Reported as a representation characteristic, not corrected.
+
+**A mid-phase data-quality discovery:** tags have a third serialization format (vote-count JSON objects, 16.4% of the catalog) that the shared Phase 1 parser silently read as empty — including for titles like *Stardew Valley*. Fixed with an additive parser (`src/audit_utils.py::parse_tags_field`); genres/categories were confirmed unaffected.
+
 ## Repository structure
 
 ```
@@ -116,21 +136,26 @@ steam-games-intelligence/
 │   ├── 01_data_audit_and_feasibility.ipynb
 │   ├── 02_market_analytics.ipynb
 │   ├── 03_success_definition_and_temporal_framing.ipynb
-│   └── 04_cohort_aware_visibility_modeling.ipynb
+│   ├── 04_cohort_aware_visibility_modeling.ipynb
+│   └── 05_game_representation_and_similarity.ipynb
 ├── src/
 │   ├── audit_utils.py           # reusable parsing utilities discovered during the audit
 │   ├── market_utils.py          # Phase 2 transforms (price tiers, cohort/genre helpers, games_clean builder)
-│   └── modeling_utils.py        # Phase 4 transforms (multi-hot encoding, point-in-time prior counts, metrics)
+│   ├── modeling_utils.py        # Phase 4 transforms (multi-hot encoding, point-in-time prior counts, metrics)
+│   └── similarity_utils.py      # Phase 5 transforms (structured/TF-IDF representations, retrieval, hybrid scoring)
 ├── figures/
 │   ├── phase1/                  # diagnostic figures referenced in the audit
 │   ├── phase2/                  # final market-analytics figures
 │   ├── phase3/                  # success-definition / temporal-framing diagnostic figures
-│   └── phase4/                  # visibility-modeling figures (ablation, calibration, error analysis, etc.)
+│   ├── phase4/                  # visibility-modeling figures (ablation, calibration, error analysis, etc.)
+│   └── phase5/                  # representation/similarity figures (coherence, bias, alpha sensitivity, etc.)
 ├── data/
 │   ├── raw/                     # place steam_games.csv / steam_games_reviews.csv here (gitignored)
 │   └── processed/
-│       ├── games_clean.parquet     # normalized game-level table, regenerated from steam_games.csv (see notebook 02)
-│       └── modeling_frame.parquet  # 2017-2023 modeling population + target + leakage-safe predictors (see notebook 03)
+│       ├── games_clean.parquet         # normalized game-level table, regenerated from steam_games.csv (see notebook 02)
+│       ├── modeling_frame.parquet      # 2017-2023 modeling population + target + leakage-safe predictors (see notebook 03)
+│       ├── similarity_frame.parquet    # similarity population + normalized text/metadata (gitignored, ~123MB, see notebook 05)
+│       └── similarity_embeddings.npy   # cached MiniLM embeddings (gitignored, ~199MB, see notebook 05)
 └── outputs/
     ├── feasibility_summary.md
     ├── feature_role_audit.csv
@@ -142,7 +167,11 @@ steam-games-intelligence/
     ├── phase4_feature_manifest.csv
     ├── phase4_ablation_results.csv
     ├── phase4_validation_metrics.csv
-    └── phase4_test_metrics.csv
+    ├── phase4_test_metrics.csv
+    ├── phase5_similarity_findings.md
+    ├── phase5_representation_audit.csv
+    ├── phase5_anchor_games.csv
+    └── phase5_neighbor_comparison.csv
 ```
 
 ## Setup

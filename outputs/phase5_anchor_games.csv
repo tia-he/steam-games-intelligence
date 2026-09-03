@@ -1,0 +1,21 @@
+name,app_id,selection_dimension,why_selected
+Stardew Valley,413150,cozy / life-sim / indie / popular,Extremely popular indie farming-life-sim; tag-rich; canonical example of a well-supported anchor
+Hades,1145360,action roguelike / indie / popular,Popular indie action-roguelike with strong genre+tag signal; narrative-adjacent
+DARK SOULS III,374320,AAA / souls-like / action RPG / popular,"AAA challenging action-RPG; tests whether representations capture ""souls-like"" as a coherent cluster"
+Counter-Strike 2,730,AAA / competitive multiplayer FPS / extremely popular,Highest-visibility anchor in the set; tests whether massive review volume biases neighbor retrieval (Task 16)
+Terraria,105600,action / sandbox / indie / popular,Long-tenured sandbox-survival hybrid with broad genre tagging
+The Witcher 3: Wild Hunt,292030,AAA / narrative RPG / single-player / popular,AAA story-driven open-world RPG; tests narrative-text similarity vs. structured RPG tagging
+Portal 2,620,AAA (Valve) / puzzle / co-op / popular,Puzzle-genre anchor with a distinctive co-op structural signal; also used for the Task 18 duplicate-name case (app_id 659 shares the exact name)
+Slay the Spire,646570,deckbuilding roguelike / indie / popular,"Defines a narrow, highly specific genre (deckbuilding) that structured tags should capture better than genres alone"
+Among Us,945360,casual / social deduction multiplayer / viral popular,Viral casual multiplayer title with minimal genre labeling; tests thin-metadata behavior
+Cities: Skylines,255710,simulation / city builder / popular,City-builder simulation; distinct structural niche from action/RPG-heavy anchors
+Baldur's Gate 3,1086940,AAA / narrative RPG / strategy / very popular,"Very recent (2023) AAA RPG; tests representation behavior for newer, top-tier titles"
+Phasmophobia,739630,horror / co-op multiplayer / popular,"Horror-genre anchor with rich descriptive tags (Psychological Horror, Supernatural); also a franchise/near-duplicate check candidate"
+Cult of the Lamb,1313140,action / strategy hybrid / indie / moderately popular,Genre-hybrid (action + strategy + base-building) testing whether representations handle multi-genre games coherently
+A Short Hike,1055540,cozy / exploration / indie / less visible,Deliberately less-visible (small review count) indie exploration game -- balances the popular anchors above
+Return of the Obra Dinn,653530,narrative mystery / deduction / indie / niche,Mechanically unusual deduction game; tests whether text-based representations capture unusual gameplay mechanics
+"Papers, Please",239030,narrative simulation / political / indie / niche,Distinctive political-simulation theme; used as a Task 14/21 case study for lexical-vs-semantic failure modes
+Farming Simulator 22,1248130,simulation / franchise / niche audience,"Large long-running franchise with a narrow, dedicated audience; tests franchise-cluster behavior (Task 15)"
+Muse Dash,774171,rhythm / indie / niche genre,Represents a genre (rhythm games) with almost no overlap with the other anchors -- tests representation specificity
+Grim Dawn,219990,indie ARPG / niche / less visible,Less-visible action-RPG; contrasts with the AAA Dark Souls III-adjacent anchors
+Disco Elysium - The Final Cut,632470,narrative RPG / critically acclaimed / niche mechanics,"Text-heavy, mechanically unusual narrative RPG; strong candidate for semantic-vs-structured divergence case study"

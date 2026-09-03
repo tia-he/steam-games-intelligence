@@ -1,0 +1,801 @@
+anchor_app_id,anchor_name,representation,rank,neighbor_app_id,neighbor_name,similarity_score
+413150,Stardew Valley,A_structured,1,405710,Staxel,2.3385
+413150,Stardew Valley,A_structured,2,1658040,I Am Future: Cozy Apocalypse Survival,2.3385
+413150,Stardew Valley,A_structured,3,1245560,Roots of Pacha,2.3025
+413150,Stardew Valley,A_structured,4,1465550,One Lonely Outpost,2.2664
+413150,Stardew Valley,A_structured,5,1084600,My Time at Sandrock,2.1549
+413150,Stardew Valley,A_structured,6,1158160,Coral Island,2.1456
+413150,Stardew Valley,A_structured,7,2140600,Ninano: Dream Ranch,2.1132
+413150,Stardew Valley,A_structured,8,666140,My Time at Portia,2.1131
+413150,Stardew Valley,A_structured,9,1062520,Dinkum,2.1077
+413150,Stardew Valley,A_structured,10,894940,Littlewood,2.1019
+413150,Stardew Valley,B_tfidf,1,4309280,Caravan Village: Farming Life,0.332
+413150,Stardew Valley,B_tfidf,2,2111170,STORY OF SEASONS: A Wonderful Life,0.1956
+413150,Stardew Valley,B_tfidf,3,416000,Orange Season,0.192
+413150,Stardew Valley,B_tfidf,4,1158160,Coral Island,0.1887
+413150,Stardew Valley,B_tfidf,5,1573620,Bit Orchard,0.1839
+413150,Stardew Valley,B_tfidf,6,666140,My Time at Portia,0.1823
+413150,Stardew Valley,B_tfidf,7,1329510,Big Farm Story,0.1779
+413150,Stardew Valley,B_tfidf,8,3628660,Small Farm,0.1749
+413150,Stardew Valley,B_tfidf,9,1501310,The Ranchers,0.1736
+413150,Stardew Valley,B_tfidf,10,1584460,Melody of Seasons,0.1711
+413150,Stardew Valley,C_semantic,1,840010,Garden Paws,0.672
+413150,Stardew Valley,C_semantic,2,2111170,STORY OF SEASONS: A Wonderful Life,0.6453
+413150,Stardew Valley,C_semantic,3,2482840,Sky Harvest,0.6239
+413150,Stardew Valley,C_semantic,4,1783620,Tales of Morrow,0.5459
+413150,Stardew Valley,C_semantic,5,3633400,Happy Surprise Garden,0.5431
+413150,Stardew Valley,C_semantic,6,1957910,Farmland Realm,0.541
+413150,Stardew Valley,C_semantic,7,4674800,Beyond the Soil: Farming & Tales Prologue,0.5381
+413150,Stardew Valley,C_semantic,8,448020,Share,0.5378
+413150,Stardew Valley,C_semantic,9,4114010,The Old Man’s Will,0.5371
+413150,Stardew Valley,C_semantic,10,3409760,Sloppy Fields,0.5343
+413150,Stardew Valley,D_hybrid_a0.5,1,840010,Garden Paws,0.6758
+413150,Stardew Valley,D_hybrid_a0.5,2,2111170,STORY OF SEASONS: A Wonderful Life,0.5966
+413150,Stardew Valley,D_hybrid_a0.5,3,405710,Staxel,0.5833
+413150,Stardew Valley,D_hybrid_a0.5,4,1515320,Harvest Days: My Dream Farm,0.5576
+413150,Stardew Valley,D_hybrid_a0.5,5,2140600,Ninano: Dream Ranch,0.5557
+413150,Stardew Valley,D_hybrid_a0.5,6,1658040,I Am Future: Cozy Apocalypse Survival,0.5555
+413150,Stardew Valley,D_hybrid_a0.5,7,1465550,One Lonely Outpost,0.5523
+413150,Stardew Valley,D_hybrid_a0.5,8,1548910,Life in Willowdale: Farm Adventures,0.5517
+413150,Stardew Valley,D_hybrid_a0.5,9,1125510,Snacko,0.551
+413150,Stardew Valley,D_hybrid_a0.5,10,1245560,Roots of Pacha,0.5491
+1145360,Hades,A_structured,1,1145350,Hades II,2.6867
+1145360,Hades,A_structured,2,2126370,Wraithbinder,2.4288
+1145360,Hades,A_structured,3,107100,Bastion,2.4
+1145360,Hades,A_structured,4,1040420,Dreamscaper,2.3906
+1145360,Hades,A_structured,5,1763250,SWORN,2.359
+1145360,Hades,A_structured,6,237930,Transistor,2.3367
+1145360,Hades,A_structured,7,266510,Hand of Fate,2.3326
+1145360,Hades,A_structured,8,327510,WASTED,2.3148
+1145360,Hades,A_structured,9,2549380,Cryptical Path,2.3071
+1145360,Hades,A_structured,10,2995560,Wildkeepers Rising,2.3071
+1145360,Hades,B_tfidf,1,1145350,Hades II,0.3853
+1145360,Hades,B_tfidf,2,1582380,Midautumn,0.2454
+1145360,Hades,B_tfidf,3,2652180,Brawlberry,0.1697
+1145360,Hades,B_tfidf,4,2783850,Superation,0.1688
+1145360,Hades,B_tfidf,5,2285940,Hollow Survivors,0.1685
+1145360,Hades,B_tfidf,6,2909680,Hollow Survivors: Prologue,0.1621
+1145360,Hades,B_tfidf,7,1510070,Cliff & Field Tower Defense,0.1548
+1145360,Hades,B_tfidf,8,373460,Fury Of The Gods,0.1543
+1145360,Hades,B_tfidf,9,2441080,Godsvivors,0.1474
+1145360,Hades,B_tfidf,10,2602000,Erogoddess: Olympus,0.1473
+1145360,Hades,C_semantic,1,2881360,Bloody Heaven 2 ：Prologue,0.6989
+1145360,Hades,C_semantic,2,2816940,Bloody Heaven 2,0.6989
+1145360,Hades,C_semantic,3,3065920,Black Myth: Heaven,0.6989
+1145360,Hades,C_semantic,4,1762130,Dungeon Avenger,0.5964
+1145360,Hades,C_semantic,5,2462570,Thor's Ascension: Nine Realms,0.5934
+1145360,Hades,C_semantic,6,2900530,Nine Realms Prologue,0.5934
+1145360,Hades,C_semantic,7,4201580,SAD GOD,0.59
+1145360,Hades,C_semantic,8,3646380,The Last Sanctum,0.5893
+1145360,Hades,C_semantic,9,1917460,Underground Lords,0.5892
+1145360,Hades,C_semantic,10,2616090,Whacking Hell!,0.5875
+1145360,Hades,D_hybrid_a0.5,1,1145350,Hades II,0.7108
+1145360,Hades,D_hybrid_a0.5,2,2816940,Bloody Heaven 2,0.663
+1145360,Hades,D_hybrid_a0.5,3,2285940,Hollow Survivors,0.6482
+1145360,Hades,D_hybrid_a0.5,4,528730,Crypt of the Serpent King,0.6448
+1145360,Hades,D_hybrid_a0.5,5,2066020,Soulstone Survivors,0.6361
+1145360,Hades,D_hybrid_a0.5,6,237930,Transistor,0.6349
+1145360,Hades,D_hybrid_a0.5,7,598060,Slasher's Keep,0.6302
+1145360,Hades,D_hybrid_a0.5,8,462770,Pyre,0.6248
+1145360,Hades,D_hybrid_a0.5,9,2881360,Bloody Heaven 2 ：Prologue,0.6235
+1145360,Hades,D_hybrid_a0.5,10,1917460,Underground Lords,0.6192
+374320,DARK SOULS III,A_structured,1,570940,DARK SOULS™: REMASTERED,2.5571
+374320,DARK SOULS III,A_structured,2,582010,Monster Hunter: World,2.4482
+374320,DARK SOULS III,A_structured,3,730310,DYNASTY WARRIORS 9,2.269
+374320,DARK SOULS III,A_structured,4,335300,DARK SOULS™ II: Scholar of the First Sin,2.2571
+374320,DARK SOULS III,A_structured,5,1245620,ELDEN RING,2.2453
+374320,DARK SOULS III,A_structured,6,449800,Attack on Titan / A.O.T. Wings of Freedom,2.235
+374320,DARK SOULS III,A_structured,7,55230,Saints Row: The Third,2.2115
+374320,DARK SOULS III,A_structured,8,236430,DARK SOULS™ II,2.2071
+374320,DARK SOULS III,A_structured,9,551730,Toukiden 2,2.1878
+374320,DARK SOULS III,A_structured,10,242640,Styx: Master of Shadows,2.1669
+374320,DARK SOULS III,B_tfidf,1,570940,DARK SOULS™: REMASTERED,0.2063
+374320,DARK SOULS III,B_tfidf,2,335300,DARK SOULS™ II: Scholar of the First Sin,0.1548
+374320,DARK SOULS III,B_tfidf,3,2328960,Flappy Souls,0.1544
+374320,DARK SOULS III,B_tfidf,4,2114520,Blood and Sorcery,0.1436
+374320,DARK SOULS III,B_tfidf,5,1488820,Dark Fantasy Warriors,0.1433
+374320,DARK SOULS III,B_tfidf,6,548890,Alone in the Dark 2,0.14
+374320,DARK SOULS III,B_tfidf,7,3237640,Dark Dominion,0.1395
+374320,DARK SOULS III,B_tfidf,8,2461850,Senua’s Saga: Hellblade II,0.1325
+374320,DARK SOULS III,B_tfidf,9,297000,Heroes® of Might & Magic® III - HD Edition,0.1318
+374320,DARK SOULS III,B_tfidf,10,236430,DARK SOULS™ II,0.1297
+374320,DARK SOULS III,C_semantic,1,335300,DARK SOULS™ II: Scholar of the First Sin,0.7234
+374320,DARK SOULS III,C_semantic,2,3340810,Hero of the Kingdom: The Lost Tales 3,0.6519
+374320,DARK SOULS III,C_semantic,3,2159450,Realm of Dread,0.643
+374320,DARK SOULS III,C_semantic,4,236430,DARK SOULS™ II,0.6379
+374320,DARK SOULS III,C_semantic,5,418950,DreadOut: Keepers of The Dark,0.6284
+374320,DARK SOULS III,C_semantic,6,1812420,An Elder Scrolls Legend: Battlespire,0.628
+374320,DARK SOULS III,C_semantic,7,2101960,Cronos: The New Dawn,0.6276
+374320,DARK SOULS III,C_semantic,8,2463980,Werewolf: The Apocalypse — Purgatory,0.6267
+374320,DARK SOULS III,C_semantic,9,3768380,Corrupted Souls,0.6225
+374320,DARK SOULS III,C_semantic,10,1711530,Justice Chronicles,0.6213
+374320,DARK SOULS III,D_hybrid_a0.5,1,335300,DARK SOULS™ II: Scholar of the First Sin,0.7379
+374320,DARK SOULS III,D_hybrid_a0.5,2,236430,DARK SOULS™ II,0.6868
+374320,DARK SOULS III,D_hybrid_a0.5,3,1245620,ELDEN RING,0.6125
+374320,DARK SOULS III,D_hybrid_a0.5,4,570940,DARK SOULS™: REMASTERED,0.6043
+374320,DARK SOULS III,D_hybrid_a0.5,5,3017860,DOOM: The Dark Ages,0.6014
+374320,DARK SOULS III,D_hybrid_a0.5,6,301640,Zombie Army Trilogy,0.5897
+374320,DARK SOULS III,D_hybrid_a0.5,7,814380,Sekiro™: Shadows Die Twice - GOTY Edition,0.582
+374320,DARK SOULS III,D_hybrid_a0.5,8,1710170,Blade of Darkness,0.5814
+374320,DARK SOULS III,D_hybrid_a0.5,9,242640,Styx: Master of Shadows,0.5774
+374320,DARK SOULS III,D_hybrid_a0.5,10,582010,Monster Hunter: World,0.5728
+730,Counter-Strike 2,A_structured,1,440,Team Fortress 2,2.307
+730,Counter-Strike 2,A_structured,2,359550,Tom Clancy's Rainbow Six Siege,2.1204
+730,Counter-Strike 2,A_structured,3,240,Counter-Strike: Source,2.0241
+730,Counter-Strike 2,A_structured,4,333930,Dirty Bomb®,2.023
+730,Counter-Strike 2,A_structured,5,570,Dota 2,1.9561
+730,Counter-Strike 2,A_structured,6,300,Day of Defeat: Source,1.937
+730,Counter-Strike 2,A_structured,7,550650,Black Squad,1.9162
+730,Counter-Strike 2,A_structured,8,488822,Tom Clancy's Rainbow Six Siege,1.8704
+730,Counter-Strike 2,A_structured,9,488823,Tom Clancy's Rainbow Six Siege,1.8704
+730,Counter-Strike 2,A_structured,10,488821,Tom Clancy's Rainbow Six Siege,1.8704
+730,Counter-Strike 2,B_tfidf,1,240,Counter-Strike: Source,0.3807
+730,Counter-Strike 2,B_tfidf,2,273110,Counter-Strike Nexon,0.3662
+730,Counter-Strike 2,B_tfidf,3,80,Counter-Strike: Condition Zero,0.2764
+730,Counter-Strike 2,B_tfidf,4,100,Counter-Strike: Condition Zero,0.2764
+730,Counter-Strike 2,B_tfidf,5,440000,Portal 2: Community Edition,0.2355
+730,Counter-Strike 2,B_tfidf,6,2958690,Clutch-Master,0.2297
+730,Counter-Strike 2,B_tfidf,7,967910,Galactic Incoming,0.1925
+730,Counter-Strike 2,B_tfidf,8,2132870,Equilibrium,0.1538
+730,Counter-Strike 2,B_tfidf,9,638490,Soldat,0.1516
+730,Counter-Strike 2,B_tfidf,10,2755240,DESCENT: A Bunnyhopping Odyssey,0.1454
+730,Counter-Strike 2,C_semantic,1,500,Left 4 Dead,0.5469
+730,Counter-Strike 2,C_semantic,2,240,Counter-Strike: Source,0.5444
+730,Counter-Strike 2,C_semantic,3,1347760,Clash II,0.5341
+730,Counter-Strike 2,C_semantic,4,2710800,Counter Attack,0.53
+730,Counter-Strike 2,C_semantic,5,684250,月之暗面 The Dark Side Of The Moon,0.5201
+730,Counter-Strike 2,C_semantic,6,2708200,CyberVerse Showdown,0.5176
+730,Counter-Strike 2,C_semantic,7,4242770,Super Strike Champions,0.5174
+730,Counter-Strike 2,C_semantic,8,80,Counter-Strike: Condition Zero,0.5118
+730,Counter-Strike 2,C_semantic,9,100,Counter-Strike: Condition Zero,0.5118
+730,Counter-Strike 2,C_semantic,10,2357570,Overwatch® 2,0.509
+730,Counter-Strike 2,D_hybrid_a0.5,1,240,Counter-Strike: Source,0.6095
+730,Counter-Strike 2,D_hybrid_a0.5,2,500,Left 4 Dead,0.5498
+730,Counter-Strike 2,D_hybrid_a0.5,3,570,Dota 2,0.548
+730,Counter-Strike 2,D_hybrid_a0.5,4,100,Counter-Strike: Condition Zero,0.5349
+730,Counter-Strike 2,D_hybrid_a0.5,5,80,Counter-Strike: Condition Zero,0.5349
+730,Counter-Strike 2,D_hybrid_a0.5,6,359550,Tom Clancy's Rainbow Six Siege,0.5322
+730,Counter-Strike 2,D_hybrid_a0.5,7,2357570,Overwatch® 2,0.5113
+730,Counter-Strike 2,D_hybrid_a0.5,8,578080,PUBG: BATTLEGROUNDS,0.5015
+730,Counter-Strike 2,D_hybrid_a0.5,9,563560,Alien Swarm: Reactive Drop,0.4926
+730,Counter-Strike 2,D_hybrid_a0.5,10,2767030,Marvel Rivals,0.4921
+105600,Terraria,A_structured,1,280520,Crea,2.6154
+105600,Terraria,A_structured,2,1169040,Necesse,2.6091
+105600,Terraria,A_structured,3,240620,Wanderlust Adventures,2.5066
+105600,Terraria,A_structured,4,1276660,Tinkertown,2.4886
+105600,Terraria,A_structured,5,498340,Shards of Azuria,2.484
+105600,Terraria,A_structured,6,211820,Starbound,2.4697
+105600,Terraria,A_structured,7,238240,Edge of Space,2.4547
+105600,Terraria,A_structured,8,211580,Wanderlust: Rebirth,2.4414
+105600,Terraria,A_structured,9,768200,Smalland: Survive the Wilds,2.4071
+105600,Terraria,A_structured,10,538100,Feel The Snow,2.3771
+105600,Terraria,B_tfidf,1,1565450,STERN,0.192
+105600,Terraria,B_tfidf,2,2278390,yni^,0.1483
+105600,Terraria,B_tfidf,3,1098000,Rifle Storm,0.1274
+105600,Terraria,B_tfidf,4,3732660,Dungeon Dwellers,0.1249
+105600,Terraria,B_tfidf,5,1098910,Lannath,0.12
+105600,Terraria,B_tfidf,6,848890,Afelhem,0.1168
+105600,Terraria,B_tfidf,7,1459500,Atlas Architect,0.1137
+105600,Terraria,B_tfidf,8,454260,The HinterLands,0.1119
+105600,Terraria,B_tfidf,9,3692370,Galdia,0.1106
+105600,Terraria,B_tfidf,10,2333420,Dungeon Mage,0.11
+105600,Terraria,C_semantic,1,593070,Digby Extreme,0.6411
+105600,Terraria,C_semantic,2,693400,Taking Valhalla VR,0.6149
+105600,Terraria,C_semantic,3,425230,Sword 'N' Board,0.6069
+105600,Terraria,C_semantic,4,2757660,Dooblets,0.5941
+105600,Terraria,C_semantic,5,550360,One Of The Last,0.5888
+105600,Terraria,C_semantic,6,1593190,Lost Islands,0.582
+105600,Terraria,C_semantic,7,1335890,Fractured Voyage,0.5812
+105600,Terraria,C_semantic,8,3504460,Raiders of the Apocalypse,0.5802
+105600,Terraria,C_semantic,9,2283580,Voxile,0.5796
+105600,Terraria,C_semantic,10,1672970,Minecraft Dungeons,0.5776
+105600,Terraria,D_hybrid_a0.5,1,1169040,Necesse,0.6723
+105600,Terraria,D_hybrid_a0.5,2,280520,Crea,0.6699
+105600,Terraria,D_hybrid_a0.5,3,2825780,2D?!,0.6522
+105600,Terraria,D_hybrid_a0.5,4,2422590,Ezerath's Last Hope,0.6332
+105600,Terraria,D_hybrid_a0.5,5,768200,Smalland: Survive the Wilds,0.6322
+105600,Terraria,D_hybrid_a0.5,6,1621690,Core Keeper,0.6274
+105600,Terraria,D_hybrid_a0.5,7,322330,Don't Starve Together,0.6229
+105600,Terraria,D_hybrid_a0.5,8,2283580,Voxile,0.6215
+105600,Terraria,D_hybrid_a0.5,9,1305440,Death Tales,0.6183
+105600,Terraria,D_hybrid_a0.5,10,347940,Forsaken Isle,0.6161
+292030,The Witcher 3: Wild Hunt,A_structured,1,20920,The Witcher 2: Assassins of Kings Enhanced Edition,2.6793
+292030,The Witcher 3: Wild Hunt,A_structured,2,345350,LIGHTNING RETURNS™: FINAL FANTASY® XIII,2.3635
+292030,The Witcher 3: Wild Hunt,A_structured,3,1091500,Cyberpunk 2077,2.353
+292030,The Witcher 3: Wild Hunt,A_structured,4,288470,Fable Anniversary,2.3304
+292030,The Witcher 3: Wild Hunt,A_structured,5,292140,FINAL FANTASY® XIII-2,2.3109
+292030,The Witcher 3: Wild Hunt,A_structured,6,72850,The Elder Scrolls V: Skyrim,2.307
+292030,The Witcher 3: Wild Hunt,A_structured,7,20900,The Witcher: Enhanced Edition Director's Cut,2.2988
+292030,The Witcher 3: Wild Hunt,A_structured,8,2623190,The Elder Scrolls IV: Oblivion Remastered,2.2755
+292030,The Witcher 3: Wild Hunt,A_structured,9,249230,Risen 3 - Titan Lords,2.2703
+292030,The Witcher 3: Wild Hunt,A_structured,10,637650,FINAL FANTASY XV WINDOWS EDITION,2.2508
+292030,The Witcher 3: Wild Hunt,B_tfidf,1,4326420,Sheepfold,0.0
+292030,The Witcher 3: Wild Hunt,B_tfidf,2,4326570,Idle Crops,0.0
+292030,The Witcher 3: Wild Hunt,B_tfidf,3,4325670,Shredder Judgement,0.0
+292030,The Witcher 3: Wild Hunt,B_tfidf,4,4325680,Aika: Heroes Of Old,0.0
+292030,The Witcher 3: Wild Hunt,B_tfidf,5,4325740,Lawnmower game Ufo Chase 2,0.0
+292030,The Witcher 3: Wild Hunt,B_tfidf,6,4326090,Godcraft Simulator,0.0
+292030,The Witcher 3: Wild Hunt,B_tfidf,7,4325150,Unknown Explorer,0.0
+292030,The Witcher 3: Wild Hunt,B_tfidf,8,4326540,Bash It,0.0
+292030,The Witcher 3: Wild Hunt,B_tfidf,9,4327530,ギルド探求団へようこそ！,0.0
+292030,The Witcher 3: Wild Hunt,B_tfidf,10,4327480,Click to Live,0.0
+292030,The Witcher 3: Wild Hunt,C_semantic,1,20900,The Witcher: Enhanced Edition Director's Cut,0.6711
+292030,The Witcher 3: Wild Hunt,C_semantic,2,711380,Code of Princess EX,0.5563
+292030,The Witcher 3: Wild Hunt,C_semantic,3,3417780,Yokai Tales,0.5524
+292030,The Witcher 3: Wild Hunt,C_semantic,4,4285180,DREADMARCH,0.5514
+292030,The Witcher 3: Wild Hunt,C_semantic,5,1177580,Dungeon Slayer: Tactics,0.5456
+292030,The Witcher 3: Wild Hunt,C_semantic,6,3936770,Before They Catch Us,0.5378
+292030,The Witcher 3: Wild Hunt,C_semantic,7,2779160,Oracle of Meles,0.5351
+292030,The Witcher 3: Wild Hunt,C_semantic,8,1804290,Circo:Dark Story,0.5347
+292030,The Witcher 3: Wild Hunt,C_semantic,9,791430,THE ARCHER: Dead Hunt,0.5324
+292030,The Witcher 3: Wild Hunt,C_semantic,10,4363270,Echoes of Isovios: A Legacy Undone,0.5318
+292030,The Witcher 3: Wild Hunt,D_hybrid_a0.5,1,20900,The Witcher: Enhanced Edition Director's Cut,0.7187
+292030,The Witcher 3: Wild Hunt,D_hybrid_a0.5,2,40300,Risen,0.5771
+292030,The Witcher 3: Wild Hunt,D_hybrid_a0.5,3,973760,Thronebreaker: The Witcher Tales,0.5765
+292030,The Witcher 3: Wild Hunt,D_hybrid_a0.5,4,20920,The Witcher 2: Assassins of Kings Enhanced Edition,0.5693
+292030,The Witcher 3: Wild Hunt,D_hybrid_a0.5,5,292120,FINAL FANTASY® XIII,0.5674
+292030,The Witcher 3: Wild Hunt,D_hybrid_a0.5,6,243930,Bound By Flame,0.5672
+292030,The Witcher 3: Wild Hunt,D_hybrid_a0.5,7,1114220,Gedonia,0.5562
+292030,The Witcher 3: Wild Hunt,D_hybrid_a0.5,8,65610,ArcaniA: Fall of Setarrif,0.5554
+292030,The Witcher 3: Wild Hunt,D_hybrid_a0.5,9,2623190,The Elder Scrolls IV: Oblivion Remastered,0.5474
+292030,The Witcher 3: Wild Hunt,D_hybrid_a0.5,10,560130,Pillars of Eternity II: Deadfire,0.5457
+620,Portal 2,A_structured,1,659,Portal 2,2.65
+620,Portal 2,A_structured,2,400,Portal,2.3033
+620,Portal 2,A_structured,3,2952340,Cubin,2.2048
+620,Portal 2,A_structured,4,52003,Portal,2.2033
+620,Portal 2,A_structured,5,2423470,Suicide Guy: The Lost Dreams,2.1792
+620,Portal 2,A_structured,6,2001120,Split Fiction,2.1235
+620,Portal 2,A_structured,7,1426210,It Takes Two,2.112
+620,Portal 2,A_structured,8,303610,Suicide Guy,2.0774
+620,Portal 2,A_structured,9,501590,Bulletstorm: Full Clip Edition,2.0772
+620,Portal 2,A_structured,10,753640,Outer Wilds,2.0499
+620,Portal 2,B_tfidf,1,659,Portal 2,1.0
+620,Portal 2,B_tfidf,2,104600,Portal 2 - The Final Hours,0.4088
+620,Portal 2,B_tfidf,3,10190,Call of Duty®: Modern Warfare® 2 (2009),0.1318
+620,Portal 2,B_tfidf,4,10180,Call of Duty®: Modern Warfare® 2 (2009),0.1318
+620,Portal 2,B_tfidf,5,671580,NeoCube,0.1292
+620,Portal 2,B_tfidf,6,22362,BRINK,0.1243
+620,Portal 2,B_tfidf,7,22360,BRINK,0.1243
+620,Portal 2,B_tfidf,8,22350,BRINK,0.1243
+620,Portal 2,B_tfidf,9,684410,Bridge Constructor Portal,0.1207
+620,Portal 2,B_tfidf,10,52003,Portal,0.1205
+620,Portal 2,C_semantic,1,659,Portal 2,1.0
+620,Portal 2,C_semantic,2,1330300,Roopit and Boopit,0.6514
+620,Portal 2,C_semantic,3,3511810,Bot & Tic,0.624
+620,Portal 2,C_semantic,4,1576540,WaveTiles,0.6223
+620,Portal 2,C_semantic,5,3007840,PuzzleScriptMIS,0.5986
+620,Portal 2,C_semantic,6,1313400,Einsteins Riddle,0.5983
+620,Portal 2,C_semantic,7,3061390,Inkwellers,0.5909
+620,Portal 2,C_semantic,8,1149900,Cheer and Track,0.5883
+620,Portal 2,C_semantic,9,2499740,Frip and Froop's Logical Labyrinth DX,0.5874
+620,Portal 2,C_semantic,10,3624530,"Brain Workout – 15 Puzzles for Memory, Math & Logic | IQ Test Games",0.5864
+620,Portal 2,D_hybrid_a0.5,1,659,Portal 2,0.9417
+620,Portal 2,D_hybrid_a0.5,2,911680,REZ PLZ,0.5578
+620,Portal 2,D_hybrid_a0.5,3,1426210,It Takes Two,0.5377
+620,Portal 2,D_hybrid_a0.5,4,400,Portal,0.534
+620,Portal 2,D_hybrid_a0.5,5,2001120,Split Fiction,0.5339
+620,Portal 2,D_hybrid_a0.5,6,1644560,Endings,0.5292
+620,Portal 2,D_hybrid_a0.5,7,1820350,Examination Chambers,0.5275
+620,Portal 2,D_hybrid_a0.5,8,879520,Ruby & Majesty: Treasure Team,0.5238
+620,Portal 2,D_hybrid_a0.5,9,2952340,Cubin,0.5231
+620,Portal 2,D_hybrid_a0.5,10,3528500,Perspective Remastered,0.5226
+646570,Slay the Spire,A_structured,1,861540,Dicey Dungeons,2.5167
+646570,Slay the Spire,A_structured,2,930780,Blood Card,2.477
+646570,Slay the Spire,A_structured,3,2577850,Seekers of Eclipse,2.4607
+646570,Slay the Spire,A_structured,4,968760,Blood Card 2: Dark Mist,2.427
+646570,Slay the Spire,A_structured,5,3132780,Forestygian,2.3833
+646570,Slay the Spire,A_structured,6,998740,Ring of Pain,2.3607
+646570,Slay the Spire,A_structured,7,3442280,Phantomancer,2.3409
+646570,Slay the Spire,A_structured,8,1260590,Hadean Tactics,2.3191
+646570,Slay the Spire,A_structured,9,919220,Destiny or Fate,2.2935
+646570,Slay the Spire,A_structured,10,2379780,Balatro,2.2772
+646570,Slay the Spire,B_tfidf,1,2338040,Cards Survivors,0.3769
+646570,Slay the Spire,B_tfidf,2,1186530,Business Wars - The Card Game,0.3006
+646570,Slay the Spire,B_tfidf,3,4711990,Atlas Zone,0.2469
+646570,Slay the Spire,B_tfidf,4,1063140,Under Spire 尖塔自走棋,0.244
+646570,Slay the Spire,B_tfidf,5,1474280,Last Kingdom - The Card Game,0.2359
+646570,Slay the Spire,B_tfidf,6,1232590,DREAMGATE,0.2307
+646570,Slay the Spire,B_tfidf,7,3094560,OMEGA 卡牌冒险,0.2262
+646570,Slay the Spire,B_tfidf,8,3650350,Darkest Cube,0.2167
+646570,Slay the Spire,B_tfidf,9,2958670,NUNNA,0.2156
+646570,Slay the Spire,B_tfidf,10,2868840,Slay the Spire 2,0.2141
+646570,Slay the Spire,C_semantic,1,2868840,Slay the Spire 2,0.841
+646570,Slay the Spire,C_semantic,2,3981070,Alchemy Hearts,0.8027
+646570,Slay the Spire,C_semantic,3,2698680,Card Fuse,0.7915
+646570,Slay the Spire,C_semantic,4,2116780,Path to Warband,0.7818
+646570,Slay the Spire,C_semantic,5,2013080,Unders_core,0.7814
+646570,Slay the Spire,C_semantic,6,3217480,Waystones,0.771
+646570,Slay the Spire,C_semantic,7,1291220,Crash The Core,0.7685
+646570,Slay the Spire,C_semantic,8,2464750,Cards and Towers,0.7683
+646570,Slay the Spire,C_semantic,9,3381320,Cave Crusade,0.757
+646570,Slay the Spire,C_semantic,10,1704120,IT Startup: Tech Fodder,0.7559
+646570,Slay the Spire,D_hybrid_a0.5,1,930780,Blood Card,0.7715
+646570,Slay the Spire,D_hybrid_a0.5,2,3132780,Forestygian,0.7553
+646570,Slay the Spire,D_hybrid_a0.5,3,2853180,Seal the Rift,0.7552
+646570,Slay the Spire,D_hybrid_a0.5,4,2698680,Card Fuse,0.74
+646570,Slay the Spire,D_hybrid_a0.5,5,2577850,Seekers of Eclipse,0.7196
+646570,Slay the Spire,D_hybrid_a0.5,6,1704120,IT Startup: Tech Fodder,0.7148
+646570,Slay the Spire,D_hybrid_a0.5,7,1924010,Shapebreaker - Tower Defense Deckbuilder,0.7117
+646570,Slay the Spire,D_hybrid_a0.5,8,1076200,Roguebook,0.7081
+646570,Slay the Spire,D_hybrid_a0.5,9,1668690,Alina of the Arena,0.7013
+646570,Slay the Spire,D_hybrid_a0.5,10,1394130,Breach Wanderers,0.6975
+945360,Among Us,A_structured,1,1445370,Imposters: Countdown,2.5331
+945360,Among Us,A_structured,2,3168600,Among Us 3D,2.3506
+945360,Among Us,A_structured,3,1849900,Among Us 3D: VR,2.2945
+945360,Among Us,A_structured,4,1773180,The Matriarch,2.1803
+945360,Among Us,A_structured,5,470220,UNO,2.1167
+945360,Among Us,A_structured,6,2185280,Alien on the Radar,2.0985
+945360,Among Us,A_structured,7,2189120,Villager's Hideout,2.039
+945360,Among Us,A_structured,8,1933490,Let's Play! Oink Games,2.0362
+945360,Among Us,A_structured,9,1556920,"1, 2 BLAME!",2.0356
+945360,Among Us,A_structured,10,1473270,Are You Smarter Than The Crowd?,2.0331
+945360,Among Us,B_tfidf,1,1440280,Killer Inside Us,0.2934
+945360,Among Us,B_tfidf,2,1505670,Crafty,0.233
+945360,Among Us,B_tfidf,3,1849900,Among Us 3D: VR,0.2242
+945360,Among Us,B_tfidf,4,3168600,Among Us 3D,0.22
+945360,Among Us,B_tfidf,5,1445370,Imposters: Countdown,0.2126
+945360,Among Us,B_tfidf,6,1306910,DICHOTOMY,0.1867
+945360,Among Us,B_tfidf,7,1416340,Impostor Inside Us,0.1824
+945360,Among Us,B_tfidf,8,2891940,Who's Next?,0.1798
+945360,Among Us,B_tfidf,9,4906350,Impostor Syndrom,0.1728
+945360,Among Us,B_tfidf,10,1671330,Suspect Enemy,0.1712
+945360,Among Us,C_semantic,1,3127650,NO STRANGERS,0.7141
+945360,Among Us,C_semantic,2,3752960,Off the Beaten Track,0.712
+945360,Among Us,C_semantic,3,866770,Spaceteam VR,0.7012
+945360,Among Us,C_semantic,4,3168600,Among Us 3D,0.6978
+945360,Among Us,C_semantic,5,1849900,Among Us 3D: VR,0.6978
+945360,Among Us,C_semantic,6,1301860,Farlight Commanders,0.6907
+945360,Among Us,C_semantic,7,1153570,Hyperventila,0.6751
+945360,Among Us,C_semantic,8,400080,Out of Space,0.6745
+945360,Among Us,C_semantic,9,4086330,Space Bash,0.6701
+945360,Among Us,C_semantic,10,1306910,DICHOTOMY,0.6641
+945360,Among Us,D_hybrid_a0.5,1,3168600,Among Us 3D,0.7407
+945360,Among Us,D_hybrid_a0.5,2,1849900,Among Us 3D: VR,0.7313
+945360,Among Us,D_hybrid_a0.5,3,1445370,Imposters: Countdown,0.7297
+945360,Among Us,D_hybrid_a0.5,4,2185280,Alien on the Radar,0.6422
+945360,Among Us,D_hybrid_a0.5,5,1556920,"1, 2 BLAME!",0.6228
+945360,Among Us,D_hybrid_a0.5,6,400080,Out of Space,0.6105
+945360,Among Us,D_hybrid_a0.5,7,866770,Spaceteam VR,0.608
+945360,Among Us,D_hybrid_a0.5,8,1671330,Suspect Enemy,0.5952
+945360,Among Us,D_hybrid_a0.5,9,1466110,Orbiterrion,0.5847
+945360,Among Us,D_hybrid_a0.5,10,1639530,Bitten! Someone has to be a villain,0.5811
+255710,Cities: Skylines,A_structured,1,1122120,STATIONflow,2.4854
+255710,Cities: Skylines,A_structured,2,423580,Project Highrise,2.4242
+255710,Cities: Skylines,A_structured,3,233450,Prison Architect,2.4019
+255710,Cities: Skylines,A_structured,4,1538570,Patron,2.3931
+255710,Cities: Skylines,A_structured,5,574720,Little Big Workshop,2.3906
+255710,Cities: Skylines,A_structured,6,1352850,Citystate II,2.374
+255710,Cities: Skylines,A_structured,7,521150,Another Brick in The Mall,2.3677
+255710,Cities: Skylines,A_structured,8,1074180,Smart City Plan,2.366
+255710,Cities: Skylines,A_structured,9,351920,Crazy Machines 3,2.3597
+255710,Cities: Skylines,A_structured,10,282560,RollerCoaster Tycoon World™,2.3541
+255710,Cities: Skylines,B_tfidf,1,2246030,Meer's: Escape,0.2335
+255710,Cities: Skylines,B_tfidf,2,225420,Cities in Motion 2,0.2038
+255710,Cities: Skylines,B_tfidf,3,1121200,Silicon City,0.1641
+255710,Cities: Skylines,B_tfidf,4,782410,Metropolis,0.1566
+255710,Cities: Skylines,B_tfidf,5,539440,Citalis,0.1534
+255710,Cities: Skylines,B_tfidf,6,4086120,Mercantile Might,0.1498
+255710,Cities: Skylines,B_tfidf,7,949230,Cities: Skylines II,0.1439
+255710,Cities: Skylines,B_tfidf,8,3436540,Cyty Byldyr,0.1417
+255710,Cities: Skylines,B_tfidf,9,1067860,NewCity,0.1403
+255710,Cities: Skylines,B_tfidf,10,2010100,Carbox,0.1371
+255710,Cities: Skylines,C_semantic,1,1084020,TheoTown,0.6932
+255710,Cities: Skylines,C_semantic,2,782410,Metropolis,0.6761
+255710,Cities: Skylines,C_semantic,3,3566200,Pocket City 2,0.6694
+255710,Cities: Skylines,C_semantic,4,3443930,Utopia,0.6433
+255710,Cities: Skylines,C_semantic,5,945740,Buildings Have Feelings Too!,0.6387
+255710,Cities: Skylines,C_semantic,6,517990,City VR,0.6375
+255710,Cities: Skylines,C_semantic,7,2438680,Airborne Empire,0.6352
+255710,Cities: Skylines,C_semantic,8,673140,Infinite Skyline,0.6309
+255710,Cities: Skylines,C_semantic,9,3185000,Skyline Urban Story,0.6195
+255710,Cities: Skylines,C_semantic,10,764550,City Builder,0.6195
+255710,Cities: Skylines,D_hybrid_a0.5,1,1489970,Highrise City,0.6855
+255710,Cities: Skylines,D_hybrid_a0.5,2,1352850,Citystate II,0.6664
+255710,Cities: Skylines,D_hybrid_a0.5,3,313010,Cities XXL,0.6657
+255710,Cities: Skylines,D_hybrid_a0.5,4,3566200,Pocket City 2,0.6645
+255710,Cities: Skylines,D_hybrid_a0.5,5,782410,Metropolis,0.6626
+255710,Cities: Skylines,D_hybrid_a0.5,6,352550,Urban Empire,0.6426
+255710,Cities: Skylines,D_hybrid_a0.5,7,225420,Cities in Motion 2,0.6415
+255710,Cities: Skylines,D_hybrid_a0.5,8,423580,Project Highrise,0.6414
+255710,Cities: Skylines,D_hybrid_a0.5,9,2838720,Tile Cities 2,0.6408
+255710,Cities: Skylines,D_hybrid_a0.5,10,949230,Cities: Skylines II,0.6396
+1086940,Baldur's Gate 3,A_structured,1,1096530,Solasta: Crown of the Magister,2.5654
+1086940,Baldur's Gate 3,A_structured,2,1545560,Shadow Gambit: The Cursed Crew,2.1967
+1086940,Baldur's Gate 3,A_structured,3,2186680,"Warhammer 40,000: Rogue Trader",2.1618
+1086940,Baldur's Gate 3,A_structured,4,1845910,Dragon Age™: The Veilguard,2.1198
+1086940,Baldur's Gate 3,A_structured,5,509580,The Lord of the Rings: Adventure Card Game - Definitive Edition,2.056
+1086940,Baldur's Gate 3,A_structured,6,1330000,Stolen Realm,2.0275
+1086940,Baldur's Gate 3,A_structured,7,973760,Thronebreaker: The Witcher Tales,2.0202
+1086940,Baldur's Gate 3,A_structured,8,1676840,For The King II,2.012
+1086940,Baldur's Gate 3,A_structured,9,373420,Divinity: Original Sin - Enhanced Edition,1.968
+1086940,Baldur's Gate 3,A_structured,10,1222690,Dragon Age™ Inquisition,1.9677
+1086940,Baldur's Gate 3,B_tfidf,1,2635030,Journey of the Forgotten,0.2577
+1086940,Baldur's Gate 3,B_tfidf,2,2738630,Dungeons & Dragons Neverwinter Nights 2: Enhanced Edition,0.1597
+1086940,Baldur's Gate 3,B_tfidf,3,435150,Divinity: Original Sin 2 - Definitive Edition,0.1509
+1086940,Baldur's Gate 3,B_tfidf,4,109600,Neverwinter,0.1452
+1086940,Baldur's Gate 3,B_tfidf,5,230230,Divinity: Original Sin (Classic),0.1445
+1086940,Baldur's Gate 3,B_tfidf,6,2265990,ENDALOR,0.1432
+1086940,Baldur's Gate 3,B_tfidf,7,3843530,Forgotten Realms: Demon Stone,0.133
+1086940,Baldur's Gate 3,B_tfidf,8,2684510,Cards of Divinity,0.1296
+1086940,Baldur's Gate 3,B_tfidf,9,860670,❂ Hexaluga ❂ Dungeons and Hunting ☠,0.1275
+1086940,Baldur's Gate 3,B_tfidf,10,1695830,Baldur's Gate: Dark Alliance,0.1253
+1086940,Baldur's Gate 3,C_semantic,1,435150,Divinity: Original Sin 2 - Definitive Edition,0.7707
+1086940,Baldur's Gate 3,C_semantic,2,919360,Alaloth: Champions of The Four Kingdoms,0.704
+1086940,Baldur's Gate 3,C_semantic,3,257350,Baldur's Gate II: Enhanced Edition,0.637
+1086940,Baldur's Gate 3,C_semantic,4,228280,Baldur's Gate: Enhanced Edition,0.5646
+1086940,Baldur's Gate 3,C_semantic,5,3253070,The Gate,0.5553
+1086940,Baldur's Gate 3,C_semantic,6,1543330,揭谛/GATE,0.5547
+1086940,Baldur's Gate 3,C_semantic,7,2074040,Third Wild,0.5446
+1086940,Baldur's Gate 3,C_semantic,8,2542520,V Gate,0.5391
+1086940,Baldur's Gate 3,C_semantic,9,4651220,Conqueror's Blade: Three Kingdoms,0.5255
+1086940,Baldur's Gate 3,C_semantic,10,425460,Tokyo Twilight Ghost Hunters Daybreak: Special Gigs,0.5138
+1086940,Baldur's Gate 3,D_hybrid_a0.5,1,435150,Divinity: Original Sin 2 - Definitive Edition,0.7125
+1086940,Baldur's Gate 3,D_hybrid_a0.5,2,257350,Baldur's Gate II: Enhanced Edition,0.6445
+1086940,Baldur's Gate 3,D_hybrid_a0.5,3,919360,Alaloth: Champions of The Four Kingdoms,0.619
+1086940,Baldur's Gate 3,D_hybrid_a0.5,4,228280,Baldur's Gate: Enhanced Edition,0.6083
+1086940,Baldur's Gate 3,D_hybrid_a0.5,5,1096530,Solasta: Crown of the Magister,0.5394
+1086940,Baldur's Gate 3,D_hybrid_a0.5,6,425460,Tokyo Twilight Ghost Hunters Daybreak: Special Gigs,0.5338
+1086940,Baldur's Gate 3,D_hybrid_a0.5,7,466300,Planescape: Torment: Enhanced Edition,0.5329
+1086940,Baldur's Gate 3,D_hybrid_a0.5,8,1845910,Dragon Age™: The Veilguard,0.5252
+1086940,Baldur's Gate 3,D_hybrid_a0.5,9,973760,Thronebreaker: The Witcher Tales,0.5231
+1086940,Baldur's Gate 3,D_hybrid_a0.5,10,1121720,Monsters' Den Chronicles,0.5171
+739630,Phasmophobia,A_structured,1,3026770,Hunt Me,2.3242
+739630,Phasmophobia,A_structured,2,1876030,Dark Past,2.3189
+739630,Phasmophobia,A_structured,3,2599370,DeathWatchers,2.2461
+739630,Phasmophobia,A_structured,4,2306710,Enigma Manor,2.1804
+739630,Phasmophobia,A_structured,5,1807080,Ghost Exile,2.1689
+739630,Phasmophobia,A_structured,6,1474390,Broken : Paranormal investigation,2.1689
+739630,Phasmophobia,A_structured,7,2834580,Cursed Despair,2.1567
+739630,Phasmophobia,A_structured,8,2619640,Evil Hunt - Evil never sleeps,2.1553
+739630,Phasmophobia,A_structured,9,1746150,Nosos,2.1548
+739630,Phasmophobia,A_structured,10,1911900,OverNight,2.1544
+739630,Phasmophobia,B_tfidf,1,2619640,Evil Hunt - Evil never sleeps,0.4256
+739630,Phasmophobia,B_tfidf,2,1911900,OverNight,0.2856
+739630,Phasmophobia,B_tfidf,3,3010560,Blessed Curse,0.2755
+739630,Phasmophobia,B_tfidf,4,1708460,Obsideo,0.2696
+739630,Phasmophobia,B_tfidf,5,2541890,Abnormality,0.2517
+739630,Phasmophobia,B_tfidf,6,4072600,Let Me Catch You,0.2502
+739630,Phasmophobia,B_tfidf,7,2058540,Paranormal Home Invaders,0.2463
+739630,Phasmophobia,B_tfidf,8,3815750,SEVERANCE,0.2439
+739630,Phasmophobia,B_tfidf,9,1724630,S.I.N. Unit: Ghost Investigation & Removal,0.2424
+739630,Phasmophobia,B_tfidf,10,2645490,Ghostbane,0.2409
+739630,Phasmophobia,C_semantic,1,3063780,Horror Simulator VR,0.7123
+739630,Phasmophobia,C_semantic,2,1777600,Paranormal Hunter,0.6489
+739630,Phasmophobia,C_semantic,3,1850740,Ghost Watchers,0.6482
+739630,Phasmophobia,C_semantic,4,2262890,Whispers in the Dark,0.6207
+739630,Phasmophobia,C_semantic,5,1985420,This is a Ghost,0.6196
+739630,Phasmophobia,C_semantic,6,2115390,Project Unknown,0.6177
+739630,Phasmophobia,C_semantic,7,1458560,I'm on Observation Duty 3,0.6083
+739630,Phasmophobia,C_semantic,8,2014650,PHOBOS Project,0.5941
+739630,Phasmophobia,C_semantic,9,1455680,BE HUNTED,0.5926
+739630,Phasmophobia,C_semantic,10,3059380,After Midnight,0.5923
+739630,Phasmophobia,D_hybrid_a0.5,1,2619640,Evil Hunt - Evil never sleeps,0.6544
+739630,Phasmophobia,D_hybrid_a0.5,2,2115390,Project Unknown,0.6431
+739630,Phasmophobia,D_hybrid_a0.5,3,1777600,Paranormal Hunter,0.6418
+739630,Phasmophobia,D_hybrid_a0.5,4,1807080,Ghost Exile,0.6357
+739630,Phasmophobia,D_hybrid_a0.5,5,1985420,This is a Ghost,0.6351
+739630,Phasmophobia,D_hybrid_a0.5,6,1911900,OverNight,0.6272
+739630,Phasmophobia,D_hybrid_a0.5,7,3063780,Horror Simulator VR,0.6256
+739630,Phasmophobia,D_hybrid_a0.5,8,1618540,Ghost Exorcism INC.,0.6225
+739630,Phasmophobia,D_hybrid_a0.5,9,1774770,Phantom Hysteria,0.6162
+739630,Phasmophobia,D_hybrid_a0.5,10,3026770,Hunt Me,0.613
+1313140,Cult of the Lamb,A_structured,1,1927380,TEMPLE of RUBBO,2.1436
+1313140,Cult of the Lamb,A_structured,2,858070,Leviathan's Sword,2.0614
+1313140,Cult of the Lamb,A_structured,3,739650,Drake Hollow,2.033
+1313140,Cult of the Lamb,A_structured,4,1101190,Dungeon Defenders: Awakened,2.0257
+1313140,Cult of the Lamb,A_structured,5,2623050,Berzerk: Recharged,2.0204
+1313140,Cult of the Lamb,A_structured,6,2944340,Unless,2.019
+1313140,Cult of the Lamb,A_structured,7,230860,Cannon Brawl,2.0178
+1313140,Cult of the Lamb,A_structured,8,1061880,Conan Chop Chop,1.9973
+1313140,Cult of the Lamb,A_structured,9,2551440,Kill A Million Rats,1.9951
+1313140,Cult of the Lamb,A_structured,10,2996040,Teenage Mutant Ninja Turtles: Splintered Fate,1.9946
+1313140,Cult of the Lamb,B_tfidf,1,4161970,Let It Consume,0.1731
+1313140,Cult of the Lamb,B_tfidf,2,3722180,Doctrine: C.U.L.T.,0.151
+1313140,Cult of the Lamb,B_tfidf,3,3453330,Cult Leader Simulator,0.1468
+1313140,Cult of the Lamb,B_tfidf,4,782140,Re-Legion,0.1437
+1313140,Cult of the Lamb,B_tfidf,5,3396920,Settler's Domain,0.1358
+1313140,Cult of the Lamb,B_tfidf,6,2732890,Cult of Abaruth,0.1352
+1313140,Cult of the Lamb,B_tfidf,7,1078870,SHEEP.IO,0.1319
+1313140,Cult of the Lamb,B_tfidf,8,2807150,Worshippers of Cthulhu,0.1295
+1313140,Cult of the Lamb,B_tfidf,9,2093550,Flock of the Low God,0.1273
+1313140,Cult of the Lamb,B_tfidf,10,2918960,Feed The Gods,0.1182
+1313140,Cult of the Lamb,C_semantic,1,917150,Godhood,0.7077
+1313140,Cult of the Lamb,C_semantic,2,3453330,Cult Leader Simulator,0.6365
+1313140,Cult of the Lamb,C_semantic,3,2892830,Fantasy Town,0.6223
+1313140,Cult of the Lamb,C_semantic,4,782140,Re-Legion,0.6221
+1313140,Cult of the Lamb,C_semantic,5,3936450,Cult of Shadows,0.6062
+1313140,Cult of the Lamb,C_semantic,6,3722180,Doctrine: C.U.L.T.,0.6025
+1313140,Cult of the Lamb,C_semantic,7,2475350,My Little Blood Cult: Let's Summon Demons,0.5971
+1313140,Cult of the Lamb,C_semantic,8,2177030,Daddy,0.593
+1313140,Cult of the Lamb,C_semantic,9,4180230,The Forest Watches,0.5858
+1313140,Cult of the Lamb,C_semantic,10,4696600,Cultist,0.5833
+1313140,Cult of the Lamb,D_hybrid_a0.5,1,960690,One Step From Eden,0.5703
+1313140,Cult of the Lamb,D_hybrid_a0.5,2,782140,Re-Legion,0.5519
+1313140,Cult of the Lamb,D_hybrid_a0.5,3,1085070,Strawhart,0.545
+1313140,Cult of the Lamb,D_hybrid_a0.5,4,739650,Drake Hollow,0.5398
+1313140,Cult of the Lamb,D_hybrid_a0.5,5,1757970,Oasis: Dark Forest,0.5317
+1313140,Cult of the Lamb,D_hybrid_a0.5,6,2172580,Spirit Mancer,0.5237
+1313140,Cult of the Lamb,D_hybrid_a0.5,7,3473350,Shrine Of The Forest God,0.5205
+1313140,Cult of the Lamb,D_hybrid_a0.5,8,1780940,Inquisitor’s Heart and Soul,0.5202
+1313140,Cult of the Lamb,D_hybrid_a0.5,9,1970980,Warlord: Britannia,0.5139
+1313140,Cult of the Lamb,D_hybrid_a0.5,10,314240,RPG Tycoon,0.5118
+1055540,A Short Hike,A_structured,1,3457390,Little Wings Deliveries,2.5794
+1055540,A Short Hike,A_structured,2,1335680,The Kind Camomille,2.5758
+1055540,A Short Hike,A_structured,3,331870,AER Memories of Old,2.5333
+1055540,A Short Hike,A_structured,4,1103120,Dune Sea,2.4719
+1055540,A Short Hike,A_structured,5,780500,Suzy Cube,2.4629
+1055540,A Short Hike,A_structured,6,2781210,CAT & ONION,2.4629
+1055540,A Short Hike,A_structured,7,1955230,Penny’s Big Breakaway,2.4289
+1055540,A Short Hike,A_structured,8,1007830,Edgar - Bokbok in Boulzac,2.4129
+1055540,A Short Hike,A_structured,9,768460,Areia: Pathway to Dawn,2.409
+1055540,A Short Hike,A_structured,10,1147110,The Long Gate,2.401
+1055540,A Short Hike,B_tfidf,1,3340070,ユニバース・リズムシューティング,0.2026
+1055540,A Short Hike,B_tfidf,2,2767280,Up Hike,0.1826
+1055540,A Short Hike,B_tfidf,3,1492120,Summit,0.1456
+1055540,A Short Hike,B_tfidf,4,1708320,GRAPPIN,0.1368
+1055540,A Short Hike,B_tfidf,5,3341800,Pack It Out,0.1349
+1055540,A Short Hike,B_tfidf,6,2321250,A Corgi's Cozy Hike,0.1339
+1055540,A Short Hike,B_tfidf,7,2138410,Turnip Mountain,0.1279
+1055540,A Short Hike,B_tfidf,8,3871250,Summit Drive a game by Luke Kim,0.1265
+1055540,A Short Hike,B_tfidf,9,3256760,Teddys Volcanic Voyage,0.1253
+1055540,A Short Hike,B_tfidf,10,711540,Lonely Mountains: Downhill,0.1241
+1055540,A Short Hike,C_semantic,1,3234300,HaltClimb,0.6025
+1055540,A Short Hike,C_semantic,2,711540,Lonely Mountains: Downhill,0.5918
+1055540,A Short Hike,C_semantic,3,3480690,Motorhome: Traveling America Collector's Edition,0.5896
+1055540,A Short Hike,C_semantic,4,1385100,Insurmountable,0.5895
+1055540,A Short Hike,C_semantic,5,620790,The Slopes,0.583
+1055540,A Short Hike,C_semantic,6,1727520,Yamafuda! 2nd station,0.574
+1055540,A Short Hike,C_semantic,7,3868480,The Inconvenient Platformer,0.5707
+1055540,A Short Hike,C_semantic,8,3994690,Alpine Skater,0.5689
+1055540,A Short Hike,C_semantic,9,2767280,Up Hike,0.5682
+1055540,A Short Hike,C_semantic,10,1568310,Penguin Climbing,0.566
+1055540,A Short Hike,D_hybrid_a0.5,1,331870,AER Memories of Old,0.6111
+1055540,A Short Hike,D_hybrid_a0.5,2,1385100,Insurmountable,0.6064
+1055540,A Short Hike,D_hybrid_a0.5,3,2143420,Chasing the Unseen,0.6022
+1055540,A Short Hike,D_hybrid_a0.5,4,2600720,Cloudy Valley,0.5998
+1055540,A Short Hike,D_hybrid_a0.5,5,1216870,Only Down!,0.5981
+1055540,A Short Hike,D_hybrid_a0.5,6,2543940,Sky Sojourn,0.5972
+1055540,A Short Hike,D_hybrid_a0.5,7,3431030,Slime Climb,0.593
+1055540,A Short Hike,D_hybrid_a0.5,8,2107550,Valley Peaks,0.5928
+1055540,A Short Hike,D_hybrid_a0.5,9,791950,Hiking Simulator 2018,0.5902
+1055540,A Short Hike,D_hybrid_a0.5,10,3457390,Little Wings Deliveries,0.5877
+653530,Return of the Obra Dinn,A_structured,1,3213430,Utter a Name,2.5629
+653530,Return of the Obra Dinn,A_structured,2,313780,Conarium,2.546
+653530,Return of the Obra Dinn,A_structured,3,258520,The Vanishing of Ethan Carter,2.5258
+653530,Return of the Obra Dinn,A_structured,4,968870,Close To The Sun,2.5164
+653530,Return of the Obra Dinn,A_structured,5,2447100,Scarred,2.5129
+653530,Return of the Obra Dinn,A_structured,6,883070,Viviette,2.5
+653530,Return of the Obra Dinn,A_structured,7,1247030,Perpetual Dream,2.4873
+653530,Return of the Obra Dinn,A_structured,8,501300,What Remains of Edith Finch,2.4758
+653530,Return of the Obra Dinn,A_structured,9,898650,The Shapeshifting Detective,2.4719
+653530,Return of the Obra Dinn,A_structured,10,1339340,The Unbeatable Path,2.4629
+653530,Return of the Obra Dinn,B_tfidf,1,1999320,Sailist,0.1625
+653530,Return of the Obra Dinn,B_tfidf,2,4911340,Blue Sign,0.1431
+653530,Return of the Obra Dinn,B_tfidf,3,4411770,Asteroid M-12,0.1415
+653530,Return of the Obra Dinn,B_tfidf,4,1449190,Seafarer,0.1407
+653530,Return of the Obra Dinn,B_tfidf,5,304650,SUNLESS SEA,0.1197
+653530,Return of the Obra Dinn,B_tfidf,6,25930,East India Company,0.1168
+653530,Return of the Obra Dinn,B_tfidf,7,1628650,A Little Time,0.1158
+653530,Return of the Obra Dinn,B_tfidf,8,1855150,Helm or High Water,0.1121
+653530,Return of the Obra Dinn,B_tfidf,9,2223740,Agatha Christie - Hercule Poirot: The London Case,0.1074
+653530,Return of the Obra Dinn,B_tfidf,10,1878190,Caribbean Marque,0.1069
+653530,Return of the Obra Dinn,C_semantic,1,618100,Feral Blue,0.543
+653530,Return of the Obra Dinn,C_semantic,2,4645360,Titanic Escape Simulator™,0.5309
+653530,Return of the Obra Dinn,C_semantic,3,15240,Silent Hunter®: Wolves of the Pacific U-Boat Missions,0.528
+653530,Return of the Obra Dinn,C_semantic,4,2120310,Sagres,0.5257
+653530,Return of the Obra Dinn,C_semantic,5,3577420,Frenzy Islands,0.5224
+653530,Return of the Obra Dinn,C_semantic,6,821250,Flotsam,0.5201
+653530,Return of the Obra Dinn,C_semantic,7,1278750,Lost At Sea,0.5171
+653530,Return of the Obra Dinn,C_semantic,8,284890,Left in the Dark: No One on Board,0.5163
+653530,Return of the Obra Dinn,C_semantic,9,3854380,Titanic Rescue,0.5095
+653530,Return of the Obra Dinn,C_semantic,10,47110,Escape From Paradise,0.5095
+653530,Return of the Obra Dinn,D_hybrid_a0.5,1,1278750,Lost At Sea,0.6609
+653530,Return of the Obra Dinn,D_hybrid_a0.5,2,1690210,Sea of Dreams,0.6024
+653530,Return of the Obra Dinn,D_hybrid_a0.5,3,1602110,Kredolis,0.6004
+653530,Return of the Obra Dinn,D_hybrid_a0.5,4,334280,Lost Sea,0.5844
+653530,Return of the Obra Dinn,D_hybrid_a0.5,5,1269500,Crowalt: Traces of the Lost Colony,0.5843
+653530,Return of the Obra Dinn,D_hybrid_a0.5,6,265790,Residue: Final Cut,0.5834
+653530,Return of the Obra Dinn,D_hybrid_a0.5,7,728420,Rogue Quest: The Vault of the Lost Tyrant,0.5803
+653530,Return of the Obra Dinn,D_hybrid_a0.5,8,366870,Narcosis,0.5745
+653530,Return of the Obra Dinn,D_hybrid_a0.5,9,1137270,Palladium: Adventure in Greece,0.5666
+653530,Return of the Obra Dinn,D_hybrid_a0.5,10,2530810,Ghost In The Mirror,0.5661
+239030,"Papers, Please",A_structured,1,680830,Wait! Life is beautiful!,2.4832
+239030,"Papers, Please",A_structured,2,220740,Chaos on Deponia,2.409
+239030,"Papers, Please",A_structured,3,371040,Goodbye Deponia,2.4015
+239030,"Papers, Please",A_structured,4,611760,Don't Escape: 4 Days to Survive,2.3954
+239030,"Papers, Please",A_structured,5,214340,Deponia,2.3819
+239030,"Papers, Please",A_structured,6,241910,Goodbye Deponia,2.3563
+239030,"Papers, Please",A_structured,7,589100,The Moonstone Equation,2.3525
+239030,"Papers, Please",A_structured,8,362940,Courier of the Crypts,2.3522
+239030,"Papers, Please",A_structured,9,80330,The Blackwell Legacy,2.3368
+239030,"Papers, Please",A_structured,10,613470,The Inner World - The Last Wind Monk,2.3263
+239030,"Papers, Please",B_tfidf,1,4285690,Airport Security Sucks!,0.1304
+239030,"Papers, Please",B_tfidf,2,1570070,Beholder 3,0.1274
+239030,"Papers, Please",B_tfidf,3,646360,El Ministerio del Tiempo VR: El tiempo en tus manos,0.1185
+239030,"Papers, Please",B_tfidf,4,795680,Border of her Heart,0.1164
+239030,"Papers, Please",B_tfidf,5,3871110,Void Authority,0.1153
+239030,"Papers, Please",B_tfidf,6,756800,Contraband Police,0.1122
+239030,"Papers, Please",B_tfidf,7,3367170,Mystic Watcher,0.1104
+239030,"Papers, Please",B_tfidf,8,1714920,Charon's Staircase,0.1054
+239030,"Papers, Please",B_tfidf,9,761620,Beholder 2,0.1053
+239030,"Papers, Please",B_tfidf,10,3134670,Border Patrol,0.105
+239030,"Papers, Please",C_semantic,1,1595230,Lottery Center Simulator,0.4779
+239030,"Papers, Please",C_semantic,2,1253870,ANIME STANDING,0.4217
+239030,"Papers, Please",C_semantic,3,1057180,Border Officer,0.4069
+239030,"Papers, Please",C_semantic,4,1750640,Dear Agony Aunt,0.4057
+239030,"Papers, Please",C_semantic,5,860320,Apartment 3301,0.3977
+239030,"Papers, Please",C_semantic,6,1917740,The Ultimate Shot,0.3959
+239030,"Papers, Please",C_semantic,7,2068980,Escape from Grustovia,0.3905
+239030,"Papers, Please",C_semantic,8,4217990,Sugoroku New Year's Party,0.3654
+239030,"Papers, Please",C_semantic,9,4899210,Please Proceed To The Dungeon,0.3465
+239030,"Papers, Please",C_semantic,10,3223090,808 - Firetower12,0.3464
+239030,"Papers, Please",D_hybrid_a0.5,1,1057180,Border Officer,0.4921
+239030,"Papers, Please",D_hybrid_a0.5,2,2068980,Escape from Grustovia,0.4769
+239030,"Papers, Please",D_hybrid_a0.5,3,447990,Spectrubes,0.469
+239030,"Papers, Please",D_hybrid_a0.5,4,491420,the 9th day:第九日,0.4599
+239030,"Papers, Please",D_hybrid_a0.5,5,2912450,"5 Days, Minimum Wage.",0.4592
+239030,"Papers, Please",D_hybrid_a0.5,6,1725440,House of Rules,0.4562
+239030,"Papers, Please",D_hybrid_a0.5,7,1288900,Title_Pending,0.4548
+239030,"Papers, Please",D_hybrid_a0.5,8,1750640,Dear Agony Aunt,0.4471
+239030,"Papers, Please",D_hybrid_a0.5,9,435120,Rusty Lake Hotel,0.4466
+239030,"Papers, Please",D_hybrid_a0.5,10,680830,Wait! Life is beautiful!,0.4461
+1248130,Farming Simulator 22,A_structured,1,447020,Farming Simulator 17,2.6535
+1248130,Farming Simulator 22,A_structured,2,787860,Farming Simulator 19,2.5091
+1248130,Farming Simulator 22,A_structured,3,976590,Bus Simulator 21 Next Stop,2.5045
+1248130,Farming Simulator 22,A_structured,4,2300320,Farming Simulator 25,2.4528
+1248130,Farming Simulator 22,A_structured,5,2546690,Tram Simulator Urban Transit,2.4528
+1248130,Farming Simulator 22,A_structured,6,313160,Farming Simulator 15,2.404
+1248130,Farming Simulator 22,A_structured,7,675010,MudRunner,2.3591
+1248130,Farming Simulator 22,A_structured,8,2878420,Old Market Simulator,2.2977
+1248130,Farming Simulator 22,A_structured,9,534370,Pure Farming 2018,2.2962
+1248130,Farming Simulator 22,A_structured,10,515180,Bus Simulator 18,2.2569
+1248130,Farming Simulator 22,B_tfidf,1,787860,Farming Simulator 19,0.2392
+1248130,Farming Simulator 22,B_tfidf,2,220260,Farming Simulator 2013 Titanium Edition,0.2244
+1248130,Farming Simulator 22,B_tfidf,3,447020,Farming Simulator 17,0.2178
+1248130,Farming Simulator 22,B_tfidf,4,259890,Agricultural Simulator: Historical Farming,0.2153
+1248130,Farming Simulator 22,B_tfidf,5,1567840,Farming Tractor Simulator 2021: Farmer Life,0.2074
+1248130,Farming Simulator 22,B_tfidf,6,2300320,Farming Simulator 25,0.2028
+1248130,Farming Simulator 22,B_tfidf,7,534370,Pure Farming 2018,0.1919
+1248130,Farming Simulator 22,B_tfidf,8,994230,Farming Village,0.1919
+1248130,Farming Simulator 22,B_tfidf,9,313160,Farming Simulator 15,0.1858
+1248130,Farming Simulator 22,B_tfidf,10,90200,Farming Simulator 2011,0.1854
+1248130,Farming Simulator 22,C_semantic,1,2975460,Farmer's Shop Simulator,0.7691
+1248130,Farming Simulator 22,C_semantic,2,1199900,Hope's Farm,0.7654
+1248130,Farming Simulator 22,C_semantic,3,3090940,G-MODEアーカイブス+ 牧場物語モバイル Life&Love,0.7547
+1248130,Farming Simulator 22,C_semantic,4,4382100,Farmer Defense,0.7542
+1248130,Farming Simulator 22,C_semantic,5,973110,Hay Day Farm 2019 - 卡通农场,0.7524
+1248130,Farming Simulator 22,C_semantic,6,220260,Farming Simulator 2013 Titanium Edition,0.739
+1248130,Farming Simulator 22,C_semantic,7,4045970,Farm Simulator,0.7267
+1248130,Farming Simulator 22,C_semantic,8,4668220,Farm Factory Simulator,0.7206
+1248130,Farming Simulator 22,C_semantic,9,2593970,Blocky Farm,0.7134
+1248130,Farming Simulator 22,C_semantic,10,690500,"In the Village of Grandfather: Summer,Sun,Heat.",0.7112
+1248130,Farming Simulator 22,D_hybrid_a0.5,1,220260,Farming Simulator 2013 Titanium Edition,0.695
+1248130,Farming Simulator 22,D_hybrid_a0.5,2,534370,Pure Farming 2018,0.6683
+1248130,Farming Simulator 22,D_hybrid_a0.5,3,447020,Farming Simulator 17,0.6536
+1248130,Farming Simulator 22,D_hybrid_a0.5,4,273790,Agricultural Simulator 2012: Deluxe Edition,0.6494
+1248130,Farming Simulator 22,D_hybrid_a0.5,5,433670,Professional Farmer 2017,0.6394
+1248130,Farming Simulator 22,D_hybrid_a0.5,6,2418520,Farm Together 2,0.6304
+1248130,Farming Simulator 22,D_hybrid_a0.5,7,787860,Farming Simulator 19,0.622
+1248130,Farming Simulator 22,D_hybrid_a0.5,8,3090940,G-MODEアーカイブス+ 牧場物語モバイル Life&Love,0.6177
+1248130,Farming Simulator 22,D_hybrid_a0.5,9,313160,Farming Simulator 15,0.6151
+1248130,Farming Simulator 22,D_hybrid_a0.5,10,1119730,"Ranch Simulator: Build, Hunt, Farm",0.6131
+774171,Muse Dash,A_structured,1,789740,Maidens of a Hollow Dream,2.4067
+774171,Muse Dash,A_structured,2,908990,Steel Vampire,2.2953
+774171,Muse Dash,A_structured,3,958480,Seed of the Dead,2.2938
+774171,Muse Dash,A_structured,4,348240,Gun Wings,2.2714
+774171,Muse Dash,A_structured,5,2826700,Dental Strike,2.2571
+774171,Muse Dash,A_structured,6,924650,Hifuu Nightmare Diary ~ Violet Detector.,2.2298
+774171,Muse Dash,A_structured,7,1202280,Slave Princess Sarah,2.2185
+774171,Muse Dash,A_structured,8,2359170,Witch's Rhythm Puzzle,2.2169
+774171,Muse Dash,A_structured,9,63700,BIT.TRIP BEAT,2.2148
+774171,Muse Dash,A_structured,10,1462600,ONNANOKO KEEPER,2.2135
+774171,Muse Dash,B_tfidf,1,2608510,Hi On Rhythm,0.205
+774171,Muse Dash,B_tfidf,2,1019500,Super Beam,0.1933
+774171,Muse Dash,B_tfidf,3,2205600,Ojiv,0.1693
+774171,Muse Dash,B_tfidf,4,3094550,Pan Beats,0.1677
+774171,Muse Dash,B_tfidf,5,1222930,VELUCITY,0.1665
+774171,Muse Dash,B_tfidf,6,1790640,ThumBeat: Button Basher Edition,0.1656
+774171,Muse Dash,B_tfidf,7,2585040,GUNVOLT RECORDS Cychronicle,0.1602
+774171,Muse Dash,B_tfidf,8,1443170,Rhythm Stars Climbing,0.158
+774171,Muse Dash,B_tfidf,9,2424850,Deep Sea Rhapsody,0.1574
+774171,Muse Dash,B_tfidf,10,1641300,Rhythium,0.1568
+774171,Muse Dash,C_semantic,1,3869710,MusicRunner,0.6481
+774171,Muse Dash,C_semantic,2,461230,Dashy Square,0.6211
+774171,Muse Dash,C_semantic,3,2838930,PuzzMiX,0.6096
+774171,Muse Dash,C_semantic,4,2717010,KALPA: Cosmic Symphony,0.6071
+774171,Muse Dash,C_semantic,5,1574320,神秘世界 Mysterious world,0.6048
+774171,Muse Dash,C_semantic,6,3705340,Claviator,0.601
+774171,Muse Dash,C_semantic,7,4146170,Relapse,0.5986
+774171,Muse Dash,C_semantic,8,1922620,Saber Ship,0.5958
+774171,Muse Dash,C_semantic,9,1855030,Stairway to Heaven's Gate,0.5914
+774171,Muse Dash,C_semantic,10,671370,Flight of Light,0.59
+774171,Muse Dash,D_hybrid_a0.5,1,2717010,KALPA: Cosmic Symphony,0.6453
+774171,Muse Dash,D_hybrid_a0.5,2,2704460,Neon Geometry Dash,0.6384
+774171,Muse Dash,D_hybrid_a0.5,3,461230,Dashy Square,0.6243
+774171,Muse Dash,D_hybrid_a0.5,4,412970,Beatbuddy: On Tour,0.6103
+774171,Muse Dash,D_hybrid_a0.5,5,218060,BIT.TRIP Presents... Runner2: Future Legend of Rhythm Alien,0.6025
+774171,Muse Dash,D_hybrid_a0.5,6,1945220,Rhythm Journey,0.5985
+774171,Muse Dash,D_hybrid_a0.5,7,2838930,PuzzMiX,0.5941
+774171,Muse Dash,D_hybrid_a0.5,8,2585040,GUNVOLT RECORDS Cychronicle,0.5904
+774171,Muse Dash,D_hybrid_a0.5,9,322170,Geometry Dash,0.5894
+774171,Muse Dash,D_hybrid_a0.5,10,1291720,Neon Beat Rider,0.587
+219990,Grim Dawn,A_structured,1,272470,The Incredible Adventures of Van Helsing II,2.4026
+219990,Grim Dawn,A_structured,2,359900,The Incredible Adventures of Van Helsing III,2.4026
+219990,Grim Dawn,A_structured,3,200710,Torchlight II,2.3971
+219990,Grim Dawn,A_structured,4,215530,The Incredible Adventures of Van Helsing,2.3706
+219990,Grim Dawn,A_structured,5,345180,Victor Vran ARPG,2.3706
+219990,Grim Dawn,A_structured,6,1538970,Hammerwatch II,2.3394
+219990,Grim Dawn,A_structured,7,1030210,Torchlight III,2.3356
+219990,Grim Dawn,A_structured,8,400170,The Incredible Adventures of Van Helsing: Final Cut,2.3016
+219990,Grim Dawn,A_structured,9,1171690,Wayfinder,2.2931
+219990,Grim Dawn,A_structured,10,1125710,Gatewalkers,2.279
+219990,Grim Dawn,B_tfidf,1,1301430,Dragon Extinction VR,0.2502
+219990,Grim Dawn,B_tfidf,2,1079320,Dragon Extinction,0.2455
+219990,Grim Dawn,B_tfidf,3,2664650,Paper Work,0.1989
+219990,Grim Dawn,B_tfidf,4,2336730,Dungeon Survivors,0.1312
+219990,Grim Dawn,B_tfidf,5,1585400,Gjallarhorn,0.1293
+219990,Grim Dawn,B_tfidf,6,1282720,Swords of Time,0.1261
+219990,Grim Dawn,B_tfidf,7,1939810,Sanctum Breach: Rebirth,0.1241
+219990,Grim Dawn,B_tfidf,8,880130,Lawless Lands,0.1185
+219990,Grim Dawn,B_tfidf,9,929060,Road to Eden,0.1153
+219990,Grim Dawn,B_tfidf,10,3605340,The Eternal Hunt,0.1109
+219990,Grim Dawn,C_semantic,1,1687730,IRON WORLD,0.7035
+219990,Grim Dawn,C_semantic,2,1079320,Dragon Extinction,0.6771
+219990,Grim Dawn,C_semantic,3,1301430,Dragon Extinction VR,0.6771
+219990,Grim Dawn,C_semantic,4,4123730,Skeleton King Quest Plus,0.6163
+219990,Grim Dawn,C_semantic,5,3027910,One Last Raid,0.6137
+219990,Grim Dawn,C_semantic,6,2963220,Ruins of Endoth,0.6098
+219990,Grim Dawn,C_semantic,7,4325150,Unknown Explorer,0.6046
+219990,Grim Dawn,C_semantic,8,38400,Fallout: A Post Nuclear Role Playing Game,0.6029
+219990,Grim Dawn,C_semantic,9,1836520,Wailing Guignol,0.597
+219990,Grim Dawn,C_semantic,10,1741650,Iron Age,0.5949
+219990,Grim Dawn,D_hybrid_a0.5,1,1079320,Dragon Extinction,0.6736
+219990,Grim Dawn,D_hybrid_a0.5,2,1301430,Dragon Extinction VR,0.662
+219990,Grim Dawn,D_hybrid_a0.5,3,2473480,Tails of Iron 2: Whiskers of Winter,0.6213
+219990,Grim Dawn,D_hybrid_a0.5,4,2426250,Halls of Watershot,0.6208
+219990,Grim Dawn,D_hybrid_a0.5,5,1335830,Len's Island,0.6108
+219990,Grim Dawn,D_hybrid_a0.5,6,1171690,Wayfinder,0.6091
+219990,Grim Dawn,D_hybrid_a0.5,7,633080,Relic Hunters Legend,0.6062
+219990,Grim Dawn,D_hybrid_a0.5,8,280520,Crea,0.6028
+219990,Grim Dawn,D_hybrid_a0.5,9,788270,Exiled Kingdoms,0.6022
+219990,Grim Dawn,D_hybrid_a0.5,10,2644360,Kingsgrave,0.601
+632470,Disco Elysium - The Final Cut,A_structured,1,552620,ATOM RPG: Post-apocalyptic indie game,2.3267
+632470,Disco Elysium - The Final Cut,A_structured,2,538680,The Legend of Heroes: Trails of Cold Steel,2.2833
+632470,Disco Elysium - The Final Cut,A_structured,3,436670,The Legend of Heroes: Trails in the Sky the 3rd,2.1782
+632470,Disco Elysium - The Final Cut,A_structured,4,560130,Pillars of Eternity II: Deadfire,2.1355
+632470,Disco Elysium - The Final Cut,A_structured,5,291650,Pillars of Eternity,2.1355
+632470,Disco Elysium - The Final Cut,A_structured,6,1403440,Broken Roads,2.1325
+632470,Disco Elysium - The Final Cut,A_structured,7,638650,Sword Art Online Re: Hollow Fragment,2.1303
+632470,Disco Elysium - The Final Cut,A_structured,8,578650,The Outer Worlds,2.089
+632470,Disco Elysium - The Final Cut,A_structured,9,748490,The Legend of Heroes: Trails of Cold Steel II,2.0781
+632470,Disco Elysium - The Final Cut,A_structured,10,640820,Pathfinder: Kingmaker — Enhanced Plus Edition,2.0635
+632470,Disco Elysium - The Final Cut,B_tfidf,1,2841360,AIPet,0.1091
+632470,Disco Elysium - The Final Cut,B_tfidf,2,1979930,FreedroidRPG,0.1025
+632470,Disco Elysium - The Final Cut,B_tfidf,3,2197490,White Mourning: Museum In Pale,0.1007
+632470,Disco Elysium - The Final Cut,B_tfidf,4,3913090,Dawn After Dusk,0.0973
+632470,Disco Elysium - The Final Cut,B_tfidf,5,2999280,Mystery Detective Adventure Collector's Edition,0.0972
+632470,Disco Elysium - The Final Cut,B_tfidf,6,1674920,Sovereign Syndicate,0.0962
+632470,Disco Elysium - The Final Cut,B_tfidf,7,1403440,Broken Roads,0.0961
+632470,Disco Elysium - The Final Cut,B_tfidf,8,1112620,Isles of Adalar,0.0956
+632470,Disco Elysium - The Final Cut,B_tfidf,9,3992300,Aphasie,0.0953
+632470,Disco Elysium - The Final Cut,B_tfidf,10,2736580,Disco Dave,0.0934
+632470,Disco Elysium - The Final Cut,C_semantic,1,383240,Angels That Kill - The Final Cut,0.6895
+632470,Disco Elysium - The Final Cut,C_semantic,2,2754660,Deal of the Dead Final Cut,0.6459
+632470,Disco Elysium - The Final Cut,C_semantic,3,1663640,The Last Oricru - Final Cut,0.5758
+632470,Disco Elysium - The Final Cut,C_semantic,4,2863680,ZERO PARADES: For Dead Spies,0.5754
+632470,Disco Elysium - The Final Cut,C_semantic,5,400170,The Incredible Adventures of Van Helsing: Final Cut,0.5537
+632470,Disco Elysium - The Final Cut,C_semantic,6,3058180,The Final Act,0.5483
+632470,Disco Elysium - The Final Cut,C_semantic,7,237850,Dreamfall Chapters,0.5433
+632470,Disco Elysium - The Final Cut,C_semantic,8,3433870,时忆 Memory of Time,0.527
+632470,Disco Elysium - The Final Cut,C_semantic,9,1091980,The Bard's Tale IV: Director's Cut,0.5224
+632470,Disco Elysium - The Final Cut,C_semantic,10,2393470,Edge of Grief,0.518
+632470,Disco Elysium - The Final Cut,D_hybrid_a0.5,1,1091980,The Bard's Tale IV: Director's Cut,0.5695
+632470,Disco Elysium - The Final Cut,D_hybrid_a0.5,2,552620,ATOM RPG: Post-apocalyptic indie game,0.5347
+632470,Disco Elysium - The Final Cut,D_hybrid_a0.5,3,1769980,Mask of the Rose,0.5145
+632470,Disco Elysium - The Final Cut,D_hybrid_a0.5,4,237850,Dreamfall Chapters,0.5123
+632470,Disco Elysium - The Final Cut,D_hybrid_a0.5,5,1500110,KNIGHT SLAVE -The Dark Valkyrie of Depravity-,0.5078
+632470,Disco Elysium - The Final Cut,D_hybrid_a0.5,6,40300,Risen,0.5059
+632470,Disco Elysium - The Final Cut,D_hybrid_a0.5,7,1403440,Broken Roads,0.5013
+632470,Disco Elysium - The Final Cut,D_hybrid_a0.5,8,400170,The Incredible Adventures of Van Helsing: Final Cut,0.5002
+632470,Disco Elysium - The Final Cut,D_hybrid_a0.5,9,640820,Pathfinder: Kingmaker — Enhanced Plus Edition,0.4947
+632470,Disco Elysium - The Final Cut,D_hybrid_a0.5,10,2056150,Heroes and Test of Succubus,0.4925

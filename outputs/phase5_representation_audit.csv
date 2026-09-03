@@ -1,0 +1,10 @@
+field,field_type,coverage,cardinality_or_length_summary,representation_role,included,reason
+genres,structured (multi-label),93.9%,"43 unique labels, median 3/game",core content signal,True,"Static, low-missingness, low-cardinality; reused Phase 1 parser"
+categories,structured (multi-label),93.6%,"98 unique labels, median 4/game",core content signal,True,"Static, low-missingness; includes technical/platform-adjacent flags (e.g. Full controller support)"
+tags,"structured (multi-label, community)",60.0%,"452 unique labels, median 18/game where present",fine-grained content signal,True,Re-evaluated for THIS task -- see Task 3; content-descriptive despite Phase 4 caution for the visibility target
+name,text (title),100.0%,median 15 chars,"query key / display, not similarity input",False,"Used for lookup/disambiguation only -- titles are not reliable content signal (franchise numbering, stylization)"
+short_description,text,94.0%,median 212 chars,primary text input (embeddings),True,"Concise, consistently-structured marketing summary; best-supported short text field"
+about_the_game,text,93.9%,"median 1219 chars, contains HTML in ~30%",primary text input (TF-IDF),True,Richest available description; HTML-cleaned before use
+detailed_description,text,93.9%,91.7% identical to about_the_game,redundant with about_the_game,False,Near-duplicate of about_the_game; including both would double-count the same content
+windows/mac/linux,structured (boolean),100%,3 flags,"platform metadata, not core content",False,Platform availability is not gameplay/thematic content; kept out of the core representation per Task 4
+developers/publishers,structured (identity),93.9%,"86,963 / 73,219 unique identities (Phase 2)","studio identity, not content",False,"Task 4: developer/publisher identity should not dominate content similarity; kept separate, not blended into the core score"
